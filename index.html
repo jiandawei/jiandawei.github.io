@@ -219,7 +219,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-09-04 15:29:07 / 修改时间：15:32:49" itemprop="dateCreated datePublished" datetime="2020-09-04T15:29:07+08:00">2020-09-04</time>
+              <time title="创建时间：2020-09-04 15:29:07 / 修改时间：15:34:18" itemprop="dateCreated datePublished" datetime="2020-09-04T15:29:07+08:00">2020-09-04</time>
             </span>
 
           
@@ -234,116 +234,14 @@
 
       
           <h2 id="简单动态字符串（simple-dynamic-string，SDS）"><a href="#简单动态字符串（simple-dynamic-string，SDS）" class="headerlink" title="简单动态字符串（simple dynamic string，SDS）"></a>简单动态字符串（simple dynamic string，SDS）</h2><h3 id="SDS的定义："><a href="#SDS的定义：" class="headerlink" title="SDS的定义："></a>SDS的定义：</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sdshdr</span> &#123;</span></span><br><span class="line">	<span class="comment">//记录SDS保存字符串的长度</span></span><br><span class="line">	<span class="keyword">int</span> len;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//记录buf数组中未使用的字节数量</span></span><br><span class="line">	<span class="keyword">int</span> <span class="built_in">free</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//字节数组，用于保存字符串</span></span><br><span class="line">	<span class="keyword">char</span> buf[];</span><br><span class="line">&#125;；</span><br></pre></td></tr></table></figure>
-<h4 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h4><blockquote>
-<p>例如我们保存了一个“Redis”的字符串。结构内的属性值分别为：len：5，free：0，buf数组的前五个字节分别为‘R’，‘e’，‘d’，‘i’，‘s’，而最后一个字节保存了空字符‘\0’.（这个空字符添加操作是由SDS函数自动完成的，所以对用户来所是透明的）</p>
-</blockquote>
-<h3 id="SDS与C字符串的区别："><a href="#SDS与C字符串的区别：" class="headerlink" title="SDS与C字符串的区别："></a>SDS与C字符串的区别：</h3><ol>
-<li>常数复杂度获取字符串长度：要获取C字符串的长度，就对整个字符串进行计数，直到遇到空字符,复杂度为O(N)；要获取SDS的长度，只需读取其len属性，复杂度为O(1).</li>
-<li>可以避免缓冲区溢出：由于C字符串不记录长度，所以当使用strcat函数（char <em>strcat(char </em>dest,char *src)）时是默认dest是有足够的空间，否则就会出现缓冲区溢出现象。而SDS在进行字符串拼接，会先检查字符串长度，如果空间不够会先进行扩容，再拼接。</li>
-<li>减少修改字符串时带来的内存重分配次数：对C字符串来说，每次修改字符串，都会引起数组的内存重分配操作，对SDS来说，每次修改字符串只是修改对应的<strong>len</strong>属性和<strong>free</strong>属性，采用<code>预分配</code>(每次会分配额外的空间)和<code>惰性空间释放</code>(不会立即释放多余的空间，而是用free记录)。</li>
-<li>二进制安全：C字符串中的字符必须符合某种编码，且不能包含空字符，否则认为是字符串结尾；而对SDS来说，可以储存任何格式的数据，因为SDS是根据len来判断是否为字符串结尾。</li>
-</ol>
-<h2 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h2><h3 id="双向-链表和链表节点的定义："><a href="#双向-链表和链表节点的定义：" class="headerlink" title="(双向)链表和链表节点的定义："></a>(双向)链表和链表节点的定义：</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">listNode</span>&#123;</span></span><br><span class="line">	<span class="comment">//前置节点</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">listNode</span> *<span class="title">prev</span>;</span></span><br><span class="line">	<span class="comment">//后置节点</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">listNode</span> *<span class="title">next</span>;</span></span><br><span class="line">	<span class="comment">//节点的值</span></span><br><span class="line">	<span class="keyword">void</span> *value;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">list</span>&#123;</span></span><br><span class="line">	<span class="comment">//表头节点</span></span><br><span class="line">	listNode *headl;</span><br><span class="line">	<span class="comment">//表尾节点</span></span><br><span class="line">	listNode *tail;</span><br><span class="line">    <span class="comment">//链表所包含的节点个数</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> len;</span><br><span class="line">	<span class="comment">//节点值复制函数</span></span><br><span class="line">	<span class="keyword">void</span> *(*dup)(<span class="keyword">void</span> *ptr);</span><br><span class="line">	<span class="comment">//节点值释放函数</span></span><br><span class="line">	<span class="keyword">void</span> *(*<span class="built_in">free</span>)(<span class="keyword">void</span> *ptr);</span><br><span class="line">	<span class="comment">//节点值比较函数</span></span><br><span class="line">	<span class="keyword">void</span> *(*match)(<span class="keyword">void</span> *ptr,<span class="keyword">void</span> *key);</span><br><span class="line">&#125;<span class="built_in">list</span>;</span><br></pre></td></tr></table></figure>
-<h4 id="示例：-1"><a href="#示例：-1" class="headerlink" title="示例："></a>示例：</h4><p><img src="/2020/09/04/redis-basical-structure/list.jpg" alt="list"></p>
-<h3 id="链表的特性："><a href="#链表的特性：" class="headerlink" title="链表的特性："></a>链表的特性：</h3><blockquote>
-<p>双向、无环、带头尾指针、带长度计数器以及多态（使用void*来保存节点的值）</p>
-</blockquote>
-<h2 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h2><h3 id="字典的定义："><a href="#字典的定义：" class="headerlink" title="字典的定义："></a>字典的定义：</h3><blockquote>
-<p>键值对：键和值进行关联，这些关联的键和值就是键值对<br>字典：又称符号表、关联数组、映射，是一种用于保存键值对的抽象数据结构.</p>
-</blockquote>
-<h3 id="哈希表节点的定义："><a href="#哈希表节点的定义：" class="headerlink" title="哈希表节点的定义："></a>哈希表节点的定义：</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">dictEntry</span> &#123;</span></span><br><span class="line">	<span class="keyword">void</span> *key;<span class="comment">//键</span></span><br><span class="line">	<span class="keyword">union</span>&#123;</span><br><span class="line">		<span class="keyword">void</span> *val;</span><br><span class="line">		uint64 _tu64;</span><br><span class="line">		int64 _ts64;</span><br><span class="line">	&#125;v;<span class="comment">//值</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">dictEntry</span> *<span class="title">next</span>;</span><span class="comment">//指向下个哈希表节点，形成链表，将多个哈希值相同的键值对连接在一起，用于解决键冲突问题</span></span><br><span class="line">&#125;dictEntry;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="哈希表的定义："><a href="#哈希表的定义：" class="headerlink" title="哈希表的定义："></a>哈希表的定义：</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">dictht</span>&#123;</span></span><br><span class="line">	dictEntry **table;<span class="comment">//哈希表数组</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="built_in">size</span>;<span class="comment">//哈希表大小</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> sizemask;<span class="comment">//哈希表大小掩码，用于计算索引值，总是等于size-1</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> used;<span class="comment">//该哈希表已有节点的数量</span></span><br><span class="line">&#125;dictht;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="字典的定义：-1"><a href="#字典的定义：-1" class="headerlink" title="字典的定义："></a>字典的定义：</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//类型特定函数定义</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">dictType</span>&#123;</span></span><br><span class="line">	<span class="function"><span class="keyword">unsigned</span> <span class="title">int</span> <span class="params">(*hashFunction)</span><span class="params">(<span class="keyword">const</span> <span class="keyword">void</span> *key)</span></span>;<span class="comment">//计算哈希值函数（如 MurmurHash算法）</span></span><br><span class="line">	<span class="keyword">void</span> *(*keyDup)(<span class="keyword">void</span> *privdata, <span class="keyword">const</span> <span class="keyword">void</span> *key);<span class="comment">//复制键函数</span></span><br><span class="line">	<span class="keyword">void</span> *(*valDup)(<span class="keyword">void</span> *privdata, <span class="keyword">const</span> <span class="keyword">void</span>  *obj);<span class="comment">//复制值函数</span></span><br><span class="line">	<span class="keyword">void</span> *(*keyCompare)(<span class="keyword">void</span> *privdata, <span class="keyword">const</span> <span class="keyword">void</span> *key1, <span class="keyword">const</span> <span class="keyword">void</span> *key1);<span class="comment">//对比键函数</span></span><br><span class="line">	<span class="keyword">void</span> (*keyDestructor)(<span class="keyword">void</span> *privdata, <span class="keyword">void</span> *key);<span class="comment">//销毁键函数</span></span><br><span class="line">	<span class="keyword">void</span> (*valDestructor)(<span class="keyword">void</span> *privdata, <span class="keyword">void</span> *obj);<span class="comment">//销毁值函数</span></span><br><span class="line">&#125;dictType;</span><br><span class="line"></span><br><span class="line"><span class="comment">//字典定义</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">dict</span>&#123;</span></span><br><span class="line">	dictType *type;<span class="comment">//类型特定函数，为用途不同字典设置不同的类型特定函数</span></span><br><span class="line">	<span class="keyword">void</span> *privdata;<span class="comment">//私有数据，传给那些类型特定函数的可选参数</span></span><br><span class="line">	dictht ht[<span class="number">2</span>];<span class="comment">//哈希表 ht[1]用于rehash</span></span><br><span class="line">	<span class="keyword">int</span> trehashidx;<span class="comment">//rehash索引，记录哈希进度，-1 未进行rehash中</span></span><br><span class="line">&#125;dict;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<blockquote>
-<ol>
-<li>type属性指向一个dictType指针，用来保存特定类型键值对的操作函数</li>
-<li>privdata保存了需要传给那些类型特定函数的可选参数</li>
-<li>我可以看见ht是一个包含两个哈希表的数组，一般情况下，字典只使用ht[0],ht[1]只会在对ht[0]进行rehas时才会使用。</li>
-</ol>
-</blockquote>
-<p>示例：</p>
-<p><img src="/2020/09/04/redis-basical-structure/dict.jpg" alt="dict"></p>
-<h3 id="哈希算法："><a href="#哈希算法：" class="headerlink" title="哈希算法："></a>哈希算法：</h3><blockquote>
-<p>每次有一个新的键值对插入字典，都会用哈希算法计算出索引值</p>
-</blockquote>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hash = dict-&gt;type-&gt;hashFunction(key);</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>具体的hashFunction的底层实现使用的是<strong>MurmurHash2</strong>算法。</p>
-</blockquote>
-<h3 id="解决键冲突问题："><a href="#解决键冲突问题：" class="headerlink" title="解决键冲突问题："></a>解决键冲突问题：</h3><blockquote>
-<p>Redis是使用<strong>链地址法</strong>来解决键冲突，而且是<strong>头插法</strong>。</p>
-</blockquote>
-<h3 id="rehash（重新排列）："><a href="#rehash（重新排列）：" class="headerlink" title="rehash（重新排列）："></a>rehash（重新排列）：</h3><blockquote>
-<p>随着键值对的个数增大或减少，我们要通过<strong>rehash操作</strong>让<strong>负载因子</strong>维持在一个合理范围</p>
-<p>（负载因子计算公式：负载因子 = 哈希表节点数量 / 哈希表大小）</p>
-</blockquote>
-<h4 id="具体的操作："><a href="#具体的操作：" class="headerlink" title="具体的操作："></a>具体的操作：</h4><blockquote>
-<ol>
-<li>为字典ht[1]哈希表分配空间，这个哈希表的空间大小取决于要执行的操作以及ht[0]当前包含的键值对数量（ht[0].used），如果执行的是<strong>扩展</strong>操作，那么ht[1]的大小为第一个大于等于ht[0].used<em>2的n次幂，如果执行的是<em>*收缩</em></em>操作，那么ht[1]的大小为第一个大于等于ht[0].used的2的n次幂。</li>
-<li>将保存在ht[0]中的所有键值对rehash到ht[1]上面rehash指的是重新计算键的哈希值和索引值,然后将键值对放置到ht[1]哈希表的指定位置上。</li>
-<li>当ht[0]包含的所有键值对都迁移到了ht[1]之后释放ht[0]将ht[1]设置为ht[0],并在ht[1]新创键一个空白哈希表为下一次rehash做准备。</li>
-</ol>
-<p>哈希表<strong>渐进式rehash</strong>采用分而置之的方式，避免了集中式rehash带来的庞大计算量，在进行期间，字典的<code>删除、查找、更新</code>等操作会在<strong>两个哈希表</strong>上进行，<code>新添加</code>到字典的键值对一律会保存到ht[1]里面，则ht[0]不再进行任何添加操作。</p>
-</blockquote>
-<h2 id="跳跃表（skipList）："><a href="#跳跃表（skipList）：" class="headerlink" title="跳跃表（skipList）："></a>跳跃表（skipList）：</h2><h4 id="跳表介绍"><a href="#跳表介绍" class="headerlink" title="跳表介绍"></a><a target="_blank" rel="noopener" href="https://www.iteye.com/blog/kenby-1187303">跳表介绍</a></h4><blockquote>
-<p>跳跃表是一种有序数据结构，它通过每个节点中维持多个指向其他节点的指针，从而达到快速访问节点的目的。</p>
-<p>跳跃表支持平均O(logN)、最坏O(N)复杂度的节点查找，还可以通过顺序性操作来批量处理节点。</p>
-</blockquote>
-<h3 id="跳跃表节点的实现："><a href="#跳跃表节点的实现：" class="headerlink" title="跳跃表节点的实现："></a>跳跃表节点的实现：</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">zskiplistNode</span> &#123;</span></span><br><span class="line">    robj *obj;  <span class="comment">/*成员对象*/</span></span><br><span class="line">    <span class="keyword">double</span> score;   <span class="comment">/*分值*/</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">zskiplistNode</span> *<span class="title">backward</span>;</span> <span class="comment">/*后退指针*/</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">zskiplistLevel</span> &#123;</span> <span class="comment">/*层*/</span></span><br><span class="line">        <span class="class"><span class="keyword">struct</span> <span class="title">zskiplistNode</span> *<span class="title">forward</span>;</span>  <span class="comment">/*前进指针*/</span></span><br><span class="line">        <span class="keyword">unsigned</span> <span class="keyword">int</span> span;  <span class="comment">/*跨度*/</span></span><br><span class="line">    &#125; level[];</span><br><span class="line">&#125; zskiplistNode;</span><br></pre></td></tr></table></figure>
-<h4 id="属性的解释："><a href="#属性的解释：" class="headerlink" title="属性的解释："></a>属性的解释：</h4><ul>
-<li>成员对象：节点的成员对象(obj属性)是一个指针，它指向一个字符串对象，而字符串对象则保存着一个SDS值。在同一个跳跃表中，各个节点保存的成员对象必须是唯一的。</li>
-<li>分值：节点的分值(score属性)是一个double类型的浮点数，跳跃表中的所有节点都按分值从小到大来排序</li>
-<li>层：跳跃表节点的level数组可以包含多个元素，每个元素都包含一些指向其他节点的指针，一般来说，层越多，访问节点速度越快。每次创建一个新跳跃表节点时，根据<strong>幂次定律</strong>随机生成一个介于1~32的值作为level数组的大小，也就是层的“高度”。</li>
-<li>前进指针：每个层都有一个指向表尾方向的前进指针(level[i].forward属性)，用于从表头向表尾方向访问节点</li>
-<li>跨度：层的跨度(level[i].span属性)用于记录两个节点之间的距离，<strong>跨度实际上是用来计算排位(rank)的：在查找某个节点的过程中，将沿途访问过的所有层的跨度累计起来，得到的结果就是目标节点在跳跃表中的排位。</strong></li>
-<li>后退指针：节点的后退指针(backward属性)用于从表尾向表头方向访问节点：跟可以一次跳过多个节点的前进指针不同，因为每个节点只有一个后退指针，所以每次<strong>只能后退至前一个节点</strong>。</li>
-</ul>
-<h3 id="跳跃表的实现："><a href="#跳跃表的实现：" class="headerlink" title="跳跃表的实现："></a>跳跃表的实现：</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">zskiplist</span> &#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">zskiplistNode</span> *<span class="title">header</span>, *<span class="title">tail</span>;</span>    <span class="comment">//header指向跳跃表的表头节点，tail指向跳跃表的表尾节点</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> length;   <span class="comment">//记录跳跃表的长度，也即是，跳跃表目前包含节点的数量(表头节点不计算在内)</span></span><br><span class="line">    <span class="keyword">int</span> level;  <span class="comment">//记录目前跳跃表内，层数最大的那个节点的层数(表头节点的层数不计算在内)</span></span><br><span class="line">&#125; zskiplist;</span><br></pre></td></tr></table></figure>
-<h4 id="属性的解释：-1"><a href="#属性的解释：-1" class="headerlink" title="属性的解释："></a>属性的解释：</h4><ul>
-<li>header：指向跳跃表的表头节点</li>
-<li>tail：指向跳跃表的表尾节点</li>
-<li>level：记录目前跳跃表内，层数最大的那个节点的层数(表头节点的层数不计算在内)</li>
-<li>length：记录跳跃表的长度，也即是，跳跃表目前包含节点的数量(表头节点不计算在内)</li>
-</ul>
-<p>示例：</p>
-<p><img src="/2020/09/04/redis-basical-structure/skiplist.jpg" alt="skiplist"></p>
-<h2 id="整数集合："><a href="#整数集合：" class="headerlink" title="整数集合："></a>整数集合：</h2><blockquote>
-<p>整数集合是集合键的底层实现之一，当一个集合只包含整数且数量不多时，就会使用整数集合作为集合键的底层实现。</p>
-</blockquote>
-<h3 id="整数集合的实现："><a href="#整数集合的实现：" class="headerlink" title="整数集合的实现："></a>整数集合的实现：</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">intset</span> &#123;</span></span><br><span class="line">    <span class="comment">/* 编码方式 */</span></span><br><span class="line">    <span class="keyword">uint32_t</span> encoding;</span><br><span class="line">    <span class="comment">/* 集合包含的元素数量 */</span></span><br><span class="line">    <span class="keyword">uint32_t</span> length;</span><br><span class="line">    <span class="comment">/* 保存元素的数组 */</span></span><br><span class="line">    <span class="keyword">int8_t</span> contents[];</span><br><span class="line">&#125; intset;</span><br></pre></td></tr></table></figure>
-<h4 id="示例：-2"><a href="#示例：-2" class="headerlink" title="示例："></a>示例：</h4><p><img src="/2020/09/04/redis-basical-structure/intset.jpg" alt="intset"></p>
-<h4 id="属性的解释：-2"><a href="#属性的解释：-2" class="headerlink" title="属性的解释："></a>属性的解释：</h4><ul>
-<li>encoding：其值表示为整数的编码方式，有INTSET_ENC_INT16、INTSET_ENC_INT32、INTSET_ENC_INT64，对应的是整数类型：int16_t、int32_t、int64_t.</li>
-<li>length：集合的元素个数</li>
-<li>contents：该数组储存的是集合的元素，按从小到大的顺序排列。</li>
-</ul>
-<h3 id="升级：每当添加的元素的类型比整数集合中的所有元素的类型都长的时候，需要进行升级操作。"><a href="#升级：每当添加的元素的类型比整数集合中的所有元素的类型都长的时候，需要进行升级操作。" class="headerlink" title="升级：每当添加的元素的类型比整数集合中的所有元素的类型都长的时候，需要进行升级操作。"></a>升级：每当添加的元素的类型比整数集合中的所有元素的类型都长的时候，需要进行升级操作。</h3><h4 id="具体步骤："><a href="#具体步骤：" class="headerlink" title="具体步骤："></a>具体步骤：</h4><ol>
-<li>根据新元素的类型扩展数组的空间</li>
-<li>将其他的数据类型转化为与新元素的数据类型相同，并将转换后的元素放到正确位置上</li>
-<li>将新元素插入到数据的合适位置，并更新<code>encoding</code>属性的值</li>
-</ol>
-<p>我们可以观察到每当出现升级操作时，新元素的摆放位置肯定是在最前面或最后面，因为其长度是大于整数集合中的所有元素。</p>
-<h2 id="压缩列表"><a href="#压缩列表" class="headerlink" title="压缩列表"></a>压缩列表</h2><h3 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h3><blockquote>
-<p>压缩列表是列表键和哈希键的底层实现之一。当一个列表键只包含少量表项，并且每个列表项要么就是小整数，要么就是长度比较短的字符串，那么Redis就会使用压缩列表作为列表键的底层实现。</p>
-</blockquote>
-<h3 id="压缩列表的实现："><a href="#压缩列表的实现：" class="headerlink" title="压缩列表的实现："></a>压缩列表的实现：</h3><p><img src="/2020/09/04/redis-basical-structure/ziplist.png" alt="ziplist"></p>
-<h3 id="压缩列表节点的构成："><a href="#压缩列表节点的构成：" class="headerlink" title="压缩列表节点的构成："></a>压缩列表节点的构成：</h3><p><img src="/2020/09/04/redis-basical-structure/ziplistnode.png" alt="ziplistnode"></p>
-<h4 id="属性解释："><a href="#属性解释：" class="headerlink" title="属性解释："></a>属性解释：</h4><ul>
-<li>previous_entry_length 属性以字节为单位,记录了压缩列表中前一个节点的长度,previous_entry_length属性的长度可以是1字节或者5字节（如果前一节点的长度小于254字节那么previous_entry_length属性的长度为1字节 ，如果前一节点的长度大于等于254字节）。根据当前节点的地址和previous_entry_length的值来计算出前一个节点的地址，压缩列表的从表尾向表头遍历操作就是使用这一原理实现的</li>
-<li>encoding属性记录了字节数组的边码方式以及编码长度。</li>
-<li>content属性负责保存节点的值，节点值可以是一个字节数组或者整数值的类型和长度由encoding决定</li>
-</ul>
-<h3 id="连锁更新："><a href="#连锁更新：" class="headerlink" title="连锁更新："></a>连锁更新：</h3><blockquote>
-<p>当加入新节点的长度比后面节点的长度要大时，前面节点的更新会引起后面节点的连锁更新。例如：当前压缩列表里的节点长度都是一字节，新加入的节点的长度为五字节，所以后面节点的previous_entry_length无法记录前一节点的长度。需要重新分配内存。除了添加节点，还有删除节点也会引起连锁反应。</p>
-</blockquote>
-<p>下面是一些具体示例：</p>
-<p>插入：</p>
-<p><img src="/2020/09/04/redis-basical-structure/insert.jpg" alt="insert"></p>
-<p>删除：</p>
-<p><img src="/2020/09/04/redis-basical-structure/delete.jpg" alt="delete"></p>
-<p>连锁更新在最坏情况下需要对压缩列表执行N次空间重分配操作，而每次空间重分配的最坏复杂度为O(n) 连锁更新最坏的时间复杂度O(n*n)</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/09/04/redis-basical-structure/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
