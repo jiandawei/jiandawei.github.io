@@ -127,7 +127,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">6</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">7</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -137,7 +137,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">16</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">26</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -194,7 +194,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/19/AVL/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/04/redis-basical-structure/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -208,7 +208,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/05/19/AVL/" class="post-title-link" itemprop="url">平衡二叉树</a>
+            <a href="/2020/09/04/redis-basical-structure/" class="post-title-link" itemprop="url">Redis底层数据结构的实现</a>
         </h2>
 
         <div class="post-meta">
@@ -217,16 +217,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-05-19 16:36:59" itemprop="dateCreated datePublished" datetime="2020-05-19T16:36:59+08:00">2020-05-19</time>
+              <time title="创建时间：2020-09-04 15:29:07 / 修改时间：15:34:18" itemprop="dateCreated datePublished" datetime="2020-09-04T15:29:07+08:00">2020-09-04</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-01 17:16:04" itemprop="dateModified" datetime="2020-09-01T17:16:04+08:00">2020-09-01</time>
-              </span>
 
           
 
@@ -239,11 +233,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="AVL-平衡二叉树"><a href="#AVL-平衡二叉树" class="headerlink" title="AVL(平衡二叉树)"></a>AVL(平衡二叉树)</h1><blockquote>
-<p>AVL树的定义<br>平衡因子 : 树中某结点其左子树的高度和右子树的高度之差<br>AVL树中的任意一个结点, 其平衡因子的绝对值小于2<br>AVL树是一种特殊的二叉搜索树 (BST树), 相对于数据极端情况下, 二叉搜索树会退化成为单链表,<br> AVL树定义了旋转操作, 在平衡因子大于等于2时, AVL树会旋转来调整树的结构, 来重新满足平衡因子小于2<br></p></blockquote>
+          <h2 id="简单动态字符串（simple-dynamic-string，SDS）"><a href="#简单动态字符串（simple-dynamic-string，SDS）" class="headerlink" title="简单动态字符串（simple dynamic string，SDS）"></a>简单动态字符串（simple dynamic string，SDS）</h2><h3 id="SDS的定义："><a href="#SDS的定义：" class="headerlink" title="SDS的定义："></a>SDS的定义：</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sdshdr</span> &#123;</span></span><br><span class="line">	<span class="comment">//记录SDS保存字符串的长度</span></span><br><span class="line">	<span class="keyword">int</span> len;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//记录buf数组中未使用的字节数量</span></span><br><span class="line">	<span class="keyword">int</span> <span class="built_in">free</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//字节数组，用于保存字符串</span></span><br><span class="line">	<span class="keyword">char</span> buf[];</span><br><span class="line">&#125;；</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/05/19/AVL/#more" rel="contents">
+              <a class="btn" href="/2020/09/04/redis-basical-structure/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -267,7 +260,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/19/BST/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/02/gcc-g-gdb/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -281,7 +274,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/05/19/BST/" class="post-title-link" itemprop="url">BST</a>
+            <a href="/2020/09/02/gcc-g-gdb/" class="post-title-link" itemprop="url">gcc、g++、gdb常用参数</a>
         </h2>
 
         <div class="post-meta">
@@ -290,16 +283,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-05-19 16:31:06" itemprop="dateCreated datePublished" datetime="2020-05-19T16:31:06+08:00">2020-05-19</time>
+              <time title="创建时间：2020-09-02 10:40:45 / 修改时间：10:42:57" itemprop="dateCreated datePublished" datetime="2020-09-02T10:40:45+08:00">2020-09-02</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-01 17:26:28" itemprop="dateModified" datetime="2020-09-01T17:26:28+08:00">2020-09-01</time>
-              </span>
 
           
 
@@ -312,11 +299,37 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="二叉树搜索树"><a href="#二叉树搜索树" class="headerlink" title="二叉树搜索树"></a>二叉树搜索树</h1><p>即BST：binary searching tree 或者 binary sort tree</p>
-<h2 id="树结点定义"><a href="#树结点定义" class="headerlink" title="树结点定义"></a>树结点定义</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">TreeNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> val;</span><br><span class="line">	</span><br><span class="line">	TreeNode *left,*right;</span><br><span class="line">	</span><br><span class="line">	TreeNode(<span class="keyword">int</span> x):val(x),left(<span class="literal">NULL</span>),right(<span class="literal">NULL</span>)&#123;&#125;</span><br><span class="line">		</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+          <h2 id="gcc、g-编译工作的流程"><a href="#gcc、g-编译工作的流程" class="headerlink" title="gcc、g++编译工作的流程"></a>gcc、g++编译工作的流程</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>部件</th>
+<th>负责工作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>预处理器（cpp）</td>
+<td>预处理生成.i文件</td>
+</tr>
+<tr>
+<td>编译器（egcs）</td>
+<td>将预处理后的文件转换成汇编语言，生成.文件</td>
+</tr>
+<tr>
+<td>汇编器（as）</td>
+<td>将汇编语言文件变为目标机器代码，生成.o文件</td>
+</tr>
+<tr>
+<td>链接器（ld）</td>
+<td>连接目标代码，生成可执行程序</td>
+</tr>
+</tbody>
+</table>
+</div>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/05/19/BST/#more" rel="contents">
+              <a class="btn" href="/2020/09/02/gcc-g-gdb/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -340,7 +353,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/19/travel-binaryTree/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/08/tree/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -354,7 +367,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/05/19/travel-binaryTree/" class="post-title-link" itemprop="url">二叉树的遍历</a>
+            <a href="/2020/08/08/tree/" class="post-title-link" itemprop="url">leetcode刷题---树</a>
         </h2>
 
         <div class="post-meta">
@@ -364,14 +377,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-05-19 16:27:33" itemprop="dateCreated datePublished" datetime="2020-05-19T16:27:33+08:00">2020-05-19</time>
+              <time title="创建时间：2020-08-08 10:57:45" itemprop="dateCreated datePublished" datetime="2020-08-08T10:57:45+08:00">2020-08-08</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-01 17:33:21" itemprop="dateModified" datetime="2020-09-01T17:33:21+08:00">2020-09-01</time>
+                <time title="修改时间：2020-09-01 17:33:27" itemprop="dateModified" datetime="2020-09-01T17:33:27+08:00">2020-09-01</time>
               </span>
 
           
@@ -385,231 +398,566 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="二叉树的遍历"><a href="#二叉树的遍历" class="headerlink" title="二叉树的遍历"></a>二叉树的遍历</h1><blockquote>
-<p>前言：本文将所有对节点的访问操作简化为简单的输出</p>
+          <h1 id="14-leetcode刷题—-树"><a href="#14-leetcode刷题—-树" class="headerlink" title="14.leetcode刷题—-树"></a>14.leetcode刷题—-树</h1><h2 id="数据结构："><a href="#数据结构：" class="headerlink" title="数据结构："></a>数据结构：</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">TreeNode</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    TreeNode *left;</span><br><span class="line">    TreeNode *right;</span><br><span class="line">    TreeNode(<span class="keyword">int</span> x) : val(x), left(<span class="literal">NULL</span>), right(<span class="literal">NULL</span>) &#123;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/08/08/tree/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/29/bit-operate/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JDW">
+      <meta itemprop="description" content="记录进阶之路">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jdw - blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/29/bit-operate/" class="post-title-link" itemprop="url">leetcode刷题---位运算</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-29 20:00:23" itemprop="dateCreated datePublished" datetime="2020-07-29T20:00:23+08:00">2020-07-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-01 17:28:54" itemprop="dateModified" datetime="2020-09-01T17:28:54+08:00">2020-09-01</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="1-位运算符号"><a href="#1-位运算符号" class="headerlink" title="1.位运算符号"></a>1.位运算符号</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>^</td>
+<td>异或</td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td>按位与</td>
+</tr>
+<tr>
+<td>\</td>
+<td>按位或</td>
+</tr>
+<tr>
+<td>&gt;&gt;</td>
+<td>算术右移</td>
+</tr>
+<tr>
+<td>&lt;&lt;</td>
+<td>算术左移</td>
+</tr>
+<tr>
+<td>~</td>
+<td>取反</td>
+</tr>
+</tbody>
+</table>
+</div>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/07/29/bit-operate/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/24/Binary-Search/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JDW">
+      <meta itemprop="description" content="记录进阶之路">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jdw - blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/24/Binary-Search/" class="post-title-link" itemprop="url">leetcode刷题---二分查找</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-24 09:16:09" itemprop="dateCreated datePublished" datetime="2020-07-24T09:16:09+08:00">2020-07-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-01 17:20:58" itemprop="dateModified" datetime="2020-09-01T17:20:58+08:00">2020-09-01</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="leetcode刷题—-二分查找"><a href="#leetcode刷题—-二分查找" class="headerlink" title="leetcode刷题—-二分查找"></a>leetcode刷题—-二分查找</h1><h2 id="算法思想："><a href="#算法思想：" class="headerlink" title="算法思想："></a>算法思想：</h2><blockquote>
+<p>二分查找也常被称为二分法或者折半查找，每次查找时通过将待查找区间分成两部分并只取一部分继续查找，将查找的复杂度大大减少。</p>
+<p>二分查找也可以看作双指针的一种特殊情况，但我们一般会将二者区分。双指针类型的题，指针通常是一步一步移动的，而在二分查找里，指针每次移动半个区间长度。</p>
+<p>具体到代码上，二分查找时区间的左右端取开区间还是闭区间在绝大多数时候都可以，因此，有时会容易搞不清楚如何定义区间开闭性。这里提供两个小诀窍，第一是尝试熟练使用一种写法，比如左闭右开（满足 C++、Python 等语言的习惯）或左闭右闭（便于处理边界条件），尽量只保持这一种写法；第二是在刷题时思考如果最后区间只剩下一个数或者两个数，自己的写法是否会陷入死循环，如果某种写法无法跳出死循环，则考虑尝试另一种写法。<br></p></blockquote>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/07/24/Binary-Search/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/23/double-pointer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JDW">
+      <meta itemprop="description" content="记录进阶之路">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jdw - blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/23/double-pointer/" class="post-title-link" itemprop="url">leetcode刷题---双指针</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-23 11:16:14" itemprop="dateCreated datePublished" datetime="2020-07-23T11:16:14+08:00">2020-07-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-02 15:13:24" itemprop="dateModified" datetime="2020-09-02T15:13:24+08:00">2020-09-02</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="leetcod刷题—-双指针"><a href="#leetcod刷题—-双指针" class="headerlink" title="leetcod刷题—-双指针"></a>leetcod刷题—-双指针</h1><h3 id="算法思想："><a href="#算法思想：" class="headerlink" title="算法思想："></a>算法思想：</h3><blockquote>
+<p><code>双指针</code>有可能用于遍历数组（或者链表），通常有两种形式：</p>
+<ol>
+<li>两个指针指向同一个数组中不同的元素（两指针遍历方向可能相同也可能不同）</li>
+<li>两个指针指向不同的数组</li></ol></blockquote>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/07/23/double-pointer/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/14/0-1-knapsack/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JDW">
+      <meta itemprop="description" content="记录进阶之路">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jdw - blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/14/0-1-knapsack/" class="post-title-link" itemprop="url">0-1背包及其扩展</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-14 15:24:41" itemprop="dateCreated datePublished" datetime="2020-07-14T15:24:41+08:00">2020-07-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-01 17:14:19" itemprop="dateModified" datetime="2020-09-01T17:14:19+08:00">2020-09-01</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="0-1背包及其扩展"><a href="#0-1背包及其扩展" class="headerlink" title="0-1背包及其扩展"></a>0-1背包及其扩展</h1><h3 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h3><blockquote>
+<p>现有n件物品和一个容量为c的背包。第i件物品的重量是重量为w[i]，价值是v[i]。已知对于一件物品必须选择取（用1表示）或者不取（用0表示），且每件物品只能被取一次（这就是“0-1”的含义）。求放置哪些物品进背包，可使这些物品的重量总和不超过背包容量，且价值总和最大。<br></p></blockquote>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/07/14/0-1-knapsack/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/14/tree-height/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JDW">
+      <meta itemprop="description" content="记录进阶之路">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jdw - blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/14/tree-height/" class="post-title-link" itemprop="url">求树的高度（不限于二叉树）——动态规划</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-14 09:41:56" itemprop="dateCreated datePublished" datetime="2020-07-14T09:41:56+08:00">2020-07-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-02 15:05:24" itemprop="dateModified" datetime="2020-09-02T15:05:24+08:00">2020-09-02</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="求树的高度（不限于二叉树）——动态规划"><a href="#求树的高度（不限于二叉树）——动态规划" class="headerlink" title="求树的高度（不限于二叉树）——动态规划"></a>求树的高度（不限于二叉树）——动态规划</h1><h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>每个节点的高度都是其所有子节点中最大的高度加一。所以，我们可以用动态规划，自底向上求高度。</p>
+<h3 id="递推公式："><a href="#递推公式：" class="headerlink" title="递推公式："></a>递推公式：</h3><script type="math/tex; mode=display">
+height[u]=max(height[v])+1;(v为所有与u的邻接点)</script>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/07/14/tree-height/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/14/longest-common-subsquence/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JDW">
+      <meta itemprop="description" content="记录进阶之路">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jdw - blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/14/longest-common-subsquence/" class="post-title-link" itemprop="url">最长公共子序列（LCS)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-14 09:40:38" itemprop="dateCreated datePublished" datetime="2020-07-14T09:40:38+08:00">2020-07-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-02 15:04:27" itemprop="dateModified" datetime="2020-09-02T15:04:27+08:00">2020-09-02</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="最长公共子序列（LCS）"><a href="#最长公共子序列（LCS）" class="headerlink" title="最长公共子序列（LCS）"></a>最长公共子序列（LCS）</h1><p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/v_july_v/article/details/6695482#">最长公共子序列（LCS）</a></p>
+<h3 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h3><p>  什么是最长公共子序列呢?好比一个数列 S，如果分别是两个或多个已知数列的子序列，且是所有符合此条件序列中最长的，则S 称为已知序列的最长公共子序列。</p>
+<pre><code>举个例子，如：有两条随机序列，如 1 3 4 5 5 ，and 2 4 5 5 7 6，则它们的最长公共子序列便是：4 5 5。
+
+注意最长公共子串（Longest CommonSubstring）和最长公共子序列（LongestCommon Subsequence, LCS）的区别：子串（Substring）是串的一个连续的部分，子序列（Subsequence）则是从不改变序列的顺序，而从序列中去掉任意的元素而获得的新序列；更简略地说，前者（子串）的字符的位置必须连续，后者（子序列LCS）则不必。比如字符串acdfg同akdfc的最长公共子串为df，而他们的最长公共子序列是adf。LCS可以使用动态规划法解决。下文具体描述。
+</code></pre>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/07/14/longest-common-subsquence/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/19/graph/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JDW">
+      <meta itemprop="description" content="记录进阶之路">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jdw - blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/19/graph/" class="post-title-link" itemprop="url">关于图的有关算法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-19 21:24:32" itemprop="dateCreated datePublished" datetime="2020-05-19T21:24:32+08:00">2020-05-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-02 15:10:02" itemprop="dateModified" datetime="2020-09-02T15:10:02+08:00">2020-09-02</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="关于图的有关算法"><a href="#关于图的有关算法" class="headerlink" title="关于图的有关算法"></a>关于图的有关算法</h1><blockquote>
+<p>前言：本文所指的图皆以一个全局二维数组存储，即邻接矩阵，且为<code>有向带权图</code><br>    设int G[maxn][maxn]为邻接矩阵，其中maxn为图能存储的最大顶点数<br>    <code>n：顶点数</code><br>    <code>m：边数</code><br>    <code>借助于一个全局数组visited[maxn]标记顶点是否已经访问</code></p>
 </blockquote>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/05/19/travel-binaryTree/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/19/heap/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JDW">
-      <meta itemprop="description" content="记录进阶之路">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jdw - blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/19/heap/" class="post-title-link" itemprop="url">堆的相关算法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-05-19 16:04:47" itemprop="dateCreated datePublished" datetime="2020-05-19T16:04:47+08:00">2020-05-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-02 15:07:24" itemprop="dateModified" datetime="2020-09-02T15:07:24+08:00">2020-09-02</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="堆的存储结构"><a href="#堆的存储结构" class="headerlink" title="堆的存储结构"></a>堆的存储结构</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Heap</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">public</span>:</span><br><span class="line">		Heap(<span class="keyword">int</span> <span class="built_in">size</span>=<span class="number">10</span>);</span><br><span class="line">		~Heap();</span><br><span class="line">		<span class="function"><span class="keyword">void</span> <span class="title">sift_down</span><span class="params">(<span class="keyword">int</span> i)</span></span>;</span><br><span class="line">		<span class="function"><span class="keyword">void</span> <span class="title">sift_up</span><span class="params">(<span class="keyword">int</span> i)</span></span>;</span><br><span class="line">		<span class="function"><span class="keyword">void</span> <span class="title">Insert</span><span class="params">(<span class="keyword">int</span> x)</span></span>;</span><br><span class="line">		<span class="function"><span class="keyword">void</span> <span class="title">Delete</span><span class="params">(<span class="keyword">int</span> i)</span></span>;</span><br><span class="line">		<span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">()</span></span>;</span><br><span class="line">		<span class="function"><span class="keyword">void</span> <span class="title">heapsort</span><span class="params">()</span></span>;	</span><br><span class="line">		<span class="keyword">int</span> *heap;<span class="comment">//用于存放数据，索引从1开始到size</span></span><br><span class="line">		<span class="keyword">int</span> <span class="built_in">size</span>;<span class="comment">//堆的大小</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*无关紧要的函数*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//构造函数 </span></span><br><span class="line">Heap::Heap(<span class="keyword">int</span> <span class="built_in">size</span>)</span><br><span class="line">&#123;</span><br><span class="line">	heap=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>*<span class="built_in">size</span>];</span><br><span class="line">	<span class="keyword">this</span>-&gt;<span class="built_in">size</span>=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//析构函数 </span></span><br><span class="line">Heap::~Heap()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">delete</span> [] heap;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//显示heap数组 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Heap::display</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;Heap:&quot;</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="built_in">size</span>;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;heap[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/05/19/heap/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/29/concept-of-database/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JDW">
-      <meta itemprop="description" content="记录进阶之路">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jdw - blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/29/concept-of-database/" class="post-title-link" itemprop="url">数据库系统概念</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-29 11:20:24" itemprop="dateCreated datePublished" datetime="2020-04-29T11:20:24+08:00">2020-04-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-01 17:28:33" itemprop="dateModified" datetime="2020-09-01T17:28:33+08:00">2020-09-01</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="函数依赖"><a href="#函数依赖" class="headerlink" title="函数依赖"></a>函数依赖</h1><h3 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h3><blockquote>
-<p>设R（U）是属性U上的一个关系模式，X和Y均为U={A1，A2，…，An}的子集，r为R的任一关系，<br>如果对于r中的任意两个元组u，v，只要有u[X]=v[X]，就有u[Y]=v[Y]，<br>则称X函数决定Y，或称Y函数依赖于X，记为X→Y<br></p></blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/04/29/concept-of-database/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/26/sort/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JDW">
-      <meta itemprop="description" content="记录进阶之路">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jdw - blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/26/sort/" class="post-title-link" itemprop="url">八大基础排序</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-26 12:10:04" itemprop="dateCreated datePublished" datetime="2020-04-26T12:10:04+08:00">2020-04-26</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-01 17:33:15" itemprop="dateModified" datetime="2020-09-01T17:33:15+08:00">2020-09-01</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="八大基础排序"><a href="#八大基础排序" class="headerlink" title="八大基础排序"></a>八大基础排序</h1><p>[TOC]</p>
-<h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><p><strong>思路：俩俩交换，大的放在后面，第一次排序后最大值已在数组末尾。因为俩俩交换，需要<code>n-1</code>趟排序（比如10个数，需要9趟排序）</strong></p>
-<p><strong>代码实现要点：两个for循环，外层循环控制排序的趟数，内层循环控制比较的次数。每趟过后，比较的次数都应该要减1</strong><br></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/04/26/sort/#more" rel="contents">
+              <a class="btn" href="/2020/05/19/graph/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -632,7 +980,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -698,12 +1046,12 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>

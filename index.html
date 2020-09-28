@@ -127,7 +127,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">6</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">7</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -137,7 +137,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">16</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">26</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -194,7 +194,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/04/redis-basical-structure/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/28/jzof-12/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -208,7 +208,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/09/04/redis-basical-structure/" class="post-title-link" itemprop="url">Redis底层数据结构的实现</a>
+            <a href="/2020/09/28/jzof-12/" class="post-title-link" itemprop="url">jzof_12</a>
         </h2>
 
         <div class="post-meta">
@@ -219,7 +219,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-09-04 15:29:07 / 修改时间：15:34:18" itemprop="dateCreated datePublished" datetime="2020-09-04T15:29:07+08:00">2020-09-04</time>
+              <time title="创建时间：2020-09-28 22:07:00 / 修改时间：22:09:34" itemprop="dateCreated datePublished" datetime="2020-09-28T22:07:00+08:00">2020-09-28</time>
             </span>
 
           
@@ -233,736 +233,626 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="简单动态字符串（simple-dynamic-string，SDS）"><a href="#简单动态字符串（simple-dynamic-string，SDS）" class="headerlink" title="简单动态字符串（simple dynamic string，SDS）"></a>简单动态字符串（simple dynamic string，SDS）</h2><h3 id="SDS的定义："><a href="#SDS的定义：" class="headerlink" title="SDS的定义："></a>SDS的定义：</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sdshdr</span> &#123;</span></span><br><span class="line">	<span class="comment">//记录SDS保存字符串的长度</span></span><br><span class="line">	<span class="keyword">int</span> len;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//记录buf数组中未使用的字节数量</span></span><br><span class="line">	<span class="keyword">int</span> <span class="built_in">free</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//字节数组，用于保存字符串</span></span><br><span class="line">	<span class="keyword">char</span> buf[];</span><br><span class="line">&#125;；</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/09/04/redis-basical-structure/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/02/gcc-g-gdb/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JDW">
-      <meta itemprop="description" content="记录进阶之路">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jdw - blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/02/gcc-g-gdb/" class="post-title-link" itemprop="url">gcc、g++、gdb常用参数</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-09-02 10:40:45 / 修改时间：10:42:57" itemprop="dateCreated datePublished" datetime="2020-09-02T10:40:45+08:00">2020-09-02</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="gcc、g-编译工作的流程"><a href="#gcc、g-编译工作的流程" class="headerlink" title="gcc、g++编译工作的流程"></a>gcc、g++编译工作的流程</h2><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>部件</th>
-<th>负责工作</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>预处理器（cpp）</td>
-<td>预处理生成.i文件</td>
-</tr>
-<tr>
-<td>编译器（egcs）</td>
-<td>将预处理后的文件转换成汇编语言，生成.文件</td>
-</tr>
-<tr>
-<td>汇编器（as）</td>
-<td>将汇编语言文件变为目标机器代码，生成.o文件</td>
-</tr>
-<tr>
-<td>链接器（ld）</td>
-<td>连接目标代码，生成可执行程序</td>
-</tr>
-</tbody>
-</table>
-</div>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/09/02/gcc-g-gdb/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/08/tree/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JDW">
-      <meta itemprop="description" content="记录进阶之路">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jdw - blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/08/tree/" class="post-title-link" itemprop="url">leetcode刷题---树</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-08-08 10:57:45" itemprop="dateCreated datePublished" datetime="2020-08-08T10:57:45+08:00">2020-08-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-01 17:33:27" itemprop="dateModified" datetime="2020-09-01T17:33:27+08:00">2020-09-01</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="14-leetcode刷题—-树"><a href="#14-leetcode刷题—-树" class="headerlink" title="14.leetcode刷题—-树"></a>14.leetcode刷题—-树</h1><h2 id="数据结构："><a href="#数据结构：" class="headerlink" title="数据结构："></a>数据结构：</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">TreeNode</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    TreeNode *left;</span><br><span class="line">    TreeNode *right;</span><br><span class="line">    TreeNode(<span class="keyword">int</span> x) : val(x), left(<span class="literal">NULL</span>), right(<span class="literal">NULL</span>) &#123;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/08/08/tree/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/29/bit-operate/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JDW">
-      <meta itemprop="description" content="记录进阶之路">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jdw - blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/29/bit-operate/" class="post-title-link" itemprop="url">leetcode刷题---位运算</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-07-29 20:00:23" itemprop="dateCreated datePublished" datetime="2020-07-29T20:00:23+08:00">2020-07-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-01 17:28:54" itemprop="dateModified" datetime="2020-09-01T17:28:54+08:00">2020-09-01</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="1-位运算符号"><a href="#1-位运算符号" class="headerlink" title="1.位运算符号"></a>1.位运算符号</h2><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>符号</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>^</td>
-<td>异或</td>
-</tr>
-<tr>
-<td>&amp;</td>
-<td>按位与</td>
-</tr>
-<tr>
-<td>\</td>
-<td>按位或</td>
-</tr>
-<tr>
-<td>&gt;&gt;</td>
-<td>算术右移</td>
-</tr>
-<tr>
-<td>&lt;&lt;</td>
-<td>算术左移</td>
-</tr>
-<tr>
-<td>~</td>
-<td>取反</td>
-</tr>
-</tbody>
-</table>
-</div>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/07/29/bit-operate/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/24/Binary-Search/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JDW">
-      <meta itemprop="description" content="记录进阶之路">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jdw - blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/24/Binary-Search/" class="post-title-link" itemprop="url">leetcode刷题---二分查找</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-07-24 09:16:09" itemprop="dateCreated datePublished" datetime="2020-07-24T09:16:09+08:00">2020-07-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-01 17:20:58" itemprop="dateModified" datetime="2020-09-01T17:20:58+08:00">2020-09-01</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="leetcode刷题—-二分查找"><a href="#leetcode刷题—-二分查找" class="headerlink" title="leetcode刷题—-二分查找"></a>leetcode刷题—-二分查找</h1><h2 id="算法思想："><a href="#算法思想：" class="headerlink" title="算法思想："></a>算法思想：</h2><blockquote>
-<p>二分查找也常被称为二分法或者折半查找，每次查找时通过将待查找区间分成两部分并只取一部分继续查找，将查找的复杂度大大减少。</p>
-<p>二分查找也可以看作双指针的一种特殊情况，但我们一般会将二者区分。双指针类型的题，指针通常是一步一步移动的，而在二分查找里，指针每次移动半个区间长度。</p>
-<p>具体到代码上，二分查找时区间的左右端取开区间还是闭区间在绝大多数时候都可以，因此，有时会容易搞不清楚如何定义区间开闭性。这里提供两个小诀窍，第一是尝试熟练使用一种写法，比如左闭右开（满足 C++、Python 等语言的习惯）或左闭右闭（便于处理边界条件），尽量只保持这一种写法；第二是在刷题时思考如果最后区间只剩下一个数或者两个数，自己的写法是否会陷入死循环，如果某种写法无法跳出死循环，则考虑尝试另一种写法。<br></p></blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/07/24/Binary-Search/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/23/double-pointer/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JDW">
-      <meta itemprop="description" content="记录进阶之路">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jdw - blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/23/double-pointer/" class="post-title-link" itemprop="url">leetcode刷题---双指针</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-07-23 11:16:14" itemprop="dateCreated datePublished" datetime="2020-07-23T11:16:14+08:00">2020-07-23</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-02 15:13:24" itemprop="dateModified" datetime="2020-09-02T15:13:24+08:00">2020-09-02</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="leetcod刷题—-双指针"><a href="#leetcod刷题—-双指针" class="headerlink" title="leetcod刷题—-双指针"></a>leetcod刷题—-双指针</h1><h3 id="算法思想："><a href="#算法思想：" class="headerlink" title="算法思想："></a>算法思想：</h3><blockquote>
-<p><code>双指针</code>有可能用于遍历数组（或者链表），通常有两种形式：</p>
-<ol>
-<li>两个指针指向同一个数组中不同的元素（两指针遍历方向可能相同也可能不同）</li>
-<li>两个指针指向不同的数组</li></ol></blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/07/23/double-pointer/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/14/0-1-knapsack/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JDW">
-      <meta itemprop="description" content="记录进阶之路">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jdw - blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/14/0-1-knapsack/" class="post-title-link" itemprop="url">0-1背包及其扩展</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-07-14 15:24:41" itemprop="dateCreated datePublished" datetime="2020-07-14T15:24:41+08:00">2020-07-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-01 17:14:19" itemprop="dateModified" datetime="2020-09-01T17:14:19+08:00">2020-09-01</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="0-1背包及其扩展"><a href="#0-1背包及其扩展" class="headerlink" title="0-1背包及其扩展"></a>0-1背包及其扩展</h1><h3 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h3><blockquote>
-<p>现有n件物品和一个容量为c的背包。第i件物品的重量是重量为w[i]，价值是v[i]。已知对于一件物品必须选择取（用1表示）或者不取（用0表示），且每件物品只能被取一次（这就是“0-1”的含义）。求放置哪些物品进背包，可使这些物品的重量总和不超过背包容量，且价值总和最大。<br></p></blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/07/14/0-1-knapsack/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/14/tree-height/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JDW">
-      <meta itemprop="description" content="记录进阶之路">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jdw - blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/14/tree-height/" class="post-title-link" itemprop="url">求树的高度（不限于二叉树）——动态规划</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-07-14 09:41:56" itemprop="dateCreated datePublished" datetime="2020-07-14T09:41:56+08:00">2020-07-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-02 15:05:24" itemprop="dateModified" datetime="2020-09-02T15:05:24+08:00">2020-09-02</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="求树的高度（不限于二叉树）——动态规划"><a href="#求树的高度（不限于二叉树）——动态规划" class="headerlink" title="求树的高度（不限于二叉树）——动态规划"></a>求树的高度（不限于二叉树）——动态规划</h1><h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>每个节点的高度都是其所有子节点中最大的高度加一。所以，我们可以用动态规划，自底向上求高度。</p>
-<h3 id="递推公式："><a href="#递推公式：" class="headerlink" title="递推公式："></a>递推公式：</h3><script type="math/tex; mode=display">
-height[u]=max(height[v])+1;(v为所有与u的邻接点)</script>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/07/14/tree-height/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/14/longest-common-subsquence/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JDW">
-      <meta itemprop="description" content="记录进阶之路">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jdw - blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/14/longest-common-subsquence/" class="post-title-link" itemprop="url">最长公共子序列（LCS)</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-07-14 09:40:38" itemprop="dateCreated datePublished" datetime="2020-07-14T09:40:38+08:00">2020-07-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-02 15:04:27" itemprop="dateModified" datetime="2020-09-02T15:04:27+08:00">2020-09-02</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="最长公共子序列（LCS）"><a href="#最长公共子序列（LCS）" class="headerlink" title="最长公共子序列（LCS）"></a>最长公共子序列（LCS）</h1><p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/v_july_v/article/details/6695482#">最长公共子序列（LCS）</a></p>
-<h3 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h3><p>  什么是最长公共子序列呢?好比一个数列 S，如果分别是两个或多个已知数列的子序列，且是所有符合此条件序列中最长的，则S 称为已知序列的最长公共子序列。</p>
-<pre><code>举个例子，如：有两条随机序列，如 1 3 4 5 5 ，and 2 4 5 5 7 6，则它们的最长公共子序列便是：4 5 5。
-
-注意最长公共子串（Longest CommonSubstring）和最长公共子序列（LongestCommon Subsequence, LCS）的区别：子串（Substring）是串的一个连续的部分，子序列（Subsequence）则是从不改变序列的顺序，而从序列中去掉任意的元素而获得的新序列；更简略地说，前者（子串）的字符的位置必须连续，后者（子序列LCS）则不必。比如字符串acdfg同akdfc的最长公共子串为df，而他们的最长公共子序列是adf。LCS可以使用动态规划法解决。下文具体描述。
-</code></pre>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/07/14/longest-common-subsquence/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/19/graph/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JDW">
-      <meta itemprop="description" content="记录进阶之路">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jdw - blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/19/graph/" class="post-title-link" itemprop="url">关于图的有关算法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-05-19 21:24:32" itemprop="dateCreated datePublished" datetime="2020-05-19T21:24:32+08:00">2020-05-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-02 15:10:02" itemprop="dateModified" datetime="2020-09-02T15:10:02+08:00">2020-09-02</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="关于图的有关算法"><a href="#关于图的有关算法" class="headerlink" title="关于图的有关算法"></a>关于图的有关算法</h1><blockquote>
-<p>前言：本文所指的图皆以一个全局二维数组存储，即邻接矩阵，且为<code>有向带权图</code><br>    设int G[maxn][maxn]为邻接矩阵，其中maxn为图能存储的最大顶点数<br>    <code>n：顶点数</code><br>    <code>m：边数</code><br>    <code>借助于一个全局数组visited[maxn]标记顶点是否已经访问</code></p>
+          <h1 id="剑指-Offer-12-矩阵中的路径"><a href="#剑指-Offer-12-矩阵中的路径" class="headerlink" title="剑指 Offer 12. 矩阵中的路径"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/ju-zhen-zhong-de-lu-jing-lcof/">剑指 Offer 12. 矩阵中的路径</a></h1><h2 id="回溯法："><a href="#回溯法：" class="headerlink" title="回溯法："></a>回溯法：</h2><blockquote>
+<p>见题“路径可以从矩阵中的任意一格开始，每一步可以在矩阵中向左、右、上、下移动一格”我们可得知每一个位置有四个方向可以走，如果走不通在回溯到上一个节点尝试其他方向。同时由于要标记已走过的路径，需要一个矩阵visited来标记位置是否已经走过。</p>
 </blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/05/19/graph/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">dfs</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">char</span>&gt;&gt;&amp; board, <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; visited, <span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> pos)</span></span>&#123;</span><br><span class="line">        <span class="comment">//如果走完了字符串</span></span><br><span class="line">        <span class="keyword">if</span>(pos == WORD.<span class="built_in">size</span>())<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="comment">//判断位置是否越界或者是否已经访问过</span></span><br><span class="line">        <span class="keyword">if</span>(x &lt; <span class="number">0</span> || x == row || y &lt; <span class="number">0</span> || y == col || visited[x][y] || WORD[pos] != board[x][y])<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="comment">//标记位置已访问</span></span><br><span class="line">        visited[x][y] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">bool</span> flag = <span class="literal">false</span>;</span><br><span class="line">        <span class="comment">//四个方向中只要有一个走通就行</span></span><br><span class="line">        flag = dfs(board , visited, x - <span class="number">1</span>, y, pos + <span class="number">1</span>) || dfs(board , visited, x + <span class="number">1</span>, y, pos + <span class="number">1</span>) || dfs(board , visited, x, y - <span class="number">1</span>, pos + <span class="number">1</span>) || dfs(board , visited, x, y + <span class="number">1</span>, pos + <span class="number">1</span>);</span><br><span class="line">        <span class="comment">//恢复原状</span></span><br><span class="line">        visited[x][y] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> flag;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">exist</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">char</span>&gt;&gt;&amp; board, <span class="built_in">string</span> <span class="keyword">word</span>)</span> </span>&#123;</span><br><span class="line">        row = board.<span class="built_in">size</span>();</span><br><span class="line">        col = board[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        WORD = <span class="keyword">word</span>;</span><br><span class="line">        <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; <span class="title">visited</span><span class="params">(row , <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(col , <span class="number">0</span>))</span></span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; row; ++i)&#123;<span class="comment">//遍历矩阵</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; col; ++j)&#123;</span><br><span class="line">                <span class="keyword">if</span>(board[i][j] == <span class="keyword">word</span>[<span class="number">0</span>])&#123;</span><br><span class="line">                    <span class="keyword">if</span>(dfs(board, visited, i , j , <span class="number">0</span>))&#123;<span class="comment">//如果字符与字符串第一个字符相同，就以该点为起点作dfs</span></span><br><span class="line">                        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> row, col;</span><br><span class="line">    <span class="built_in">string</span> WORD;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/28/jzof-11/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JDW">
+      <meta itemprop="description" content="记录进阶之路">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jdw - blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/28/jzof-11/" class="post-title-link" itemprop="url">jzof_11</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-28 22:06:55 / 修改时间：22:09:21" itemprop="dateCreated datePublished" datetime="2020-09-28T22:06:55+08:00">2020-09-28</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="剑指-Offer-11-旋转数组的最小数字"><a href="#剑指-Offer-11-旋转数组的最小数字" class="headerlink" title="剑指 Offer 11. 旋转数组的最小数字"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/xuan-zhuan-shu-zu-de-zui-xiao-shu-zi-lcof/">剑指 Offer 11. 旋转数组的最小数字</a></h1><p>观察旋转数组的特性，我们可知数组一共有两个递增序列组成，可能第二个递增序列的元素个数为0。</p>
+<ol>
+<li>如果中间元素比最后一个元素要小的话，证明最小元素是在第一个递增序列里。移动右指针。</li>
+<li>如果中间元素比最后一个元素要大的话，证明最小元素是在第二个递增序列里。移动左指针。</li>
+<li>如果中间元素和最后一个元素相等的话，证明最小元素是在第一个递增序列里。将右指针左移一位。</li>
+</ol>
+<blockquote>
+<p>相信前面两点很容易理解，问题是第三点，为何要“将右指针左移一位”。由于第三种情况我们不能判断最小元素是位于前半段还是后半段，所以不能随便忽略某一部分。最右元素与中间元素相等，无论最右元素是否为最小元素，我们都可以将右指针左移动一位来缩小范围。因为最右元素有中间元素代替。</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">minArray</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; numbers)</span></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(left &lt;right)&#123;    </span><br><span class="line">     	mid = (left + right) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(numbers[right] &lt; numbers[mid])</span><br><span class="line">        	left = mid + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span>  <span class="keyword">if</span>(numbers[mid] &lt; numbers[right])  </span><br><span class="line">        	right = mid;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        	--right;          </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> numbers[left];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/28/jzof-10/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JDW">
+      <meta itemprop="description" content="记录进阶之路">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jdw - blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/28/jzof-10/" class="post-title-link" itemprop="url">jzof_10</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-28 22:06:50 / 修改时间：22:09:08" itemprop="dateCreated datePublished" datetime="2020-09-28T22:06:50+08:00">2020-09-28</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="剑指-Offer-10-I-斐波那契数列"><a href="#剑指-Offer-10-I-斐波那契数列" class="headerlink" title="剑指 Offer 10- I. 斐波那契数列"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/fei-bo-na-qi-shu-lie-lcof/">剑指 Offer 10- I. 斐波那契数列</a></h1><h1 id="剑指-Offer-10-II-青蛙跳台阶问题"><a href="#剑指-Offer-10-II-青蛙跳台阶问题" class="headerlink" title="剑指 Offer 10- II. 青蛙跳台阶问题"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/qing-wa-tiao-tai-jie-wen-ti-lcof/">剑指 Offer 10- II. 青蛙跳台阶问题</a></h1><h3 id="问题三：用一个2×1的小矩形去覆盖一个大矩形，小矩形可以横着或竖着去覆盖，问有多少种想法。"><a href="#问题三：用一个2×1的小矩形去覆盖一个大矩形，小矩形可以横着或竖着去覆盖，问有多少种想法。" class="headerlink" title="问题三：用一个2×1的小矩形去覆盖一个大矩形，小矩形可以横着或竖着去覆盖，问有多少种想法。"></a>问题三：用一个2×1的小矩形去覆盖一个大矩形，小矩形可以横着或竖着去覆盖，问有多少种想法。</h3><p>题解：</p>
+<blockquote>
+<p>以上问题都是斐波那契数列的变式。</p>
+</blockquote>
+<h3 id="递归："><a href="#递归：" class="headerlink" title="递归："></a>递归：</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fib</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">0</span>)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(n == <span class="number">1</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> fib(n - <span class="number">1</span>) + fib(n - <span class="number">2</span>); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="动态规划：由于递归重复计算很多，计算效率极低，我们将中间结果存储起来，可以避免重复计算。"><a href="#动态规划：由于递归重复计算很多，计算效率极低，我们将中间结果存储起来，可以避免重复计算。" class="headerlink" title="动态规划：由于递归重复计算很多，计算效率极低，我们将中间结果存储起来，可以避免重复计算。"></a>动态规划：由于递归重复计算很多，计算效率极低，我们将中间结果存储起来，可以避免重复计算。</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; dp;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fib</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    d.resize(<span class="number">101</span>);</span><br><span class="line">    <span class="keyword">if</span>(n==<span class="number">0</span>)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(n==<span class="number">1</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(d[n]!=<span class="number">0</span>)<span class="keyword">return</span> d[n];</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">int</span> r=(fib(n<span class="number">-1</span>)+fib(n<span class="number">-2</span>))%<span class="number">1000000007</span>;</span><br><span class="line">            d[n]=r;</span><br><span class="line">            <span class="keyword">return</span> r;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="数学方法："><a href="#数学方法：" class="headerlink" title="数学方法："></a>数学方法：</h3><p>其实fib(n)</p>
+<script type="math/tex; mode=display">
+fib(n) = \left[ \begin{matrix}1&1\\1&0 \end{matrix} \right]^{n-1}</script><p>其中求矩阵的n-1次方可以用求pow的相同方式去求。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/28/jzof-9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JDW">
+      <meta itemprop="description" content="记录进阶之路">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jdw - blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/28/jzof-9/" class="post-title-link" itemprop="url">jzof_9</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-28 22:06:45 / 修改时间：22:08:56" itemprop="dateCreated datePublished" datetime="2020-09-28T22:06:45+08:00">2020-09-28</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="剑指-Offer-09-用两个栈实现队列"><a href="#剑指-Offer-09-用两个栈实现队列" class="headerlink" title="剑指 Offer 09. 用两个栈实现队列"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/yong-liang-ge-zhan-shi-xian-dui-lie-lcof/">剑指 Offer 09. 用两个栈实现队列</a></h1><p>队列主要有三个功能，</p>
+<ul>
+<li>front()：返回队首元素</li>
+<li>pop()：在队首删除元素</li>
+<li>push()：在队尾插入元素</li>
+</ul>
+<ul>
+<li><h2 id="push操作复杂度为O-1-pop-操作复杂度为O-N"><a href="#push操作复杂度为O-1-pop-操作复杂度为O-N" class="headerlink" title="push操作复杂度为O(1),pop()操作复杂度为O(N)"></a>push操作复杂度为O(1),pop()操作复杂度为O(N)</h2></li>
+</ul>
+<blockquote>
+<p>我们先来看看栈的特性，（如果入栈期间不出栈）出栈序列和入栈序列互为逆序，而对于队列来说，（如果入队期间不出队）入队序列和出队序列相同。所以要想用栈来模拟队列，栈从栈顶到栈底的顺序应该就是队列的出序序列，也就是说要将先入栈的元素的位置比后入栈的位置要高，这单凭一个栈是无法完成的。所以需要两个栈，一个用于存储“队列”元素（称为A），另一个用于辅助<strong>入队</strong>操作（称为B）：先将把新入队元素加入A栈，然后再把已经入队的元素加入到这个辅助的栈（直至A栈空），然后再将B栈的元素按序倒入A栈。</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; a,b;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> val)</span></span>&#123;<span class="comment">//先将已经入队的元素加入到这个辅助的栈（直至A栈空）</span></span><br><span class="line">    <span class="keyword">while</span>(!a.empty())&#123;</span><br><span class="line">        b.push(a.top());</span><br><span class="line">        a.pop();</span><br><span class="line">    &#125;</span><br><span class="line">    a.push(val);<span class="comment">//将新元素加入A栈</span></span><br><span class="line">    <span class="keyword">while</span>(!b.empty())&#123;<span class="comment">//再将B栈所有元素按序倒入到a栈</span></span><br><span class="line">        a.push(b.top());</span><br><span class="line">        b.pop();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pop</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> front = a.top(); a.pop();</span><br><span class="line">    <span class="keyword">return</span> front;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><h2 id="push操作复杂度为O-N-pop-操作复杂度为O-1"><a href="#push操作复杂度为O-N-pop-操作复杂度为O-1" class="headerlink" title="push操作复杂度为O(N),pop()操作复杂度为O(1)"></a>push操作复杂度为O(N),pop()操作复杂度为O(1)</h2></li>
+</ul>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; a, b;</span><br><span class="line"></span><br><span class="line"><span class="comment">//直接将新元素加入到A栈</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> val)</span></span>&#123;</span><br><span class="line">    a.push(val);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//其实就是利用B栈作辅助，取出A栈栈底元素</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pop</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans;</span><br><span class="line">    <span class="keyword">while</span>(!a.empty())&#123;</span><br><span class="line">        b.push(a.top());</span><br><span class="line">        a.pop();</span><br><span class="line">    &#125;</span><br><span class="line">    ans = b.top(); b.pop();</span><br><span class="line">    <span class="keyword">while</span>(!b.empty())&#123;</span><br><span class="line">        a.push(b.top());</span><br><span class="line">        b.pop();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/28/jzof-8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JDW">
+      <meta itemprop="description" content="记录进阶之路">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jdw - blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/28/jzof-8/" class="post-title-link" itemprop="url">jzof_8</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-28 22:06:40 / 修改时间：22:08:44" itemprop="dateCreated datePublished" datetime="2020-09-28T22:06:40+08:00">2020-09-28</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="二叉树的下一个节点，给定二叉树中的一个节点，请找出中序遍历的下一个节点。（节点包含：左右指针以及父指针）"><a href="#二叉树的下一个节点，给定二叉树中的一个节点，请找出中序遍历的下一个节点。（节点包含：左右指针以及父指针）" class="headerlink" title="二叉树的下一个节点，给定二叉树中的一个节点，请找出中序遍历的下一个节点。（节点包含：左右指针以及父指针）"></a>二叉树的下一个节点，给定二叉树中的一个节点，请找出中序遍历的下一个节点。（节点包含：左右指针以及父指针）</h1><blockquote>
+<p>由于leetcode上没有第8题，所以根据题目意思自己写函数。</p>
+</blockquote>
+<p>节点结构</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">treeNode</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> val;</span><br><span class="line">	treeNode *left, *right, *parent;</span><br><span class="line">	treeNode(<span class="keyword">int</span> x) : val(x), left(<span class="literal">NULL</span>), right(<span class="literal">NULL</span>), parent(<span class="literal">NULL</span>); </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>分析情况：</p>
+<ol>
+<li>若给出节点的父节点为空，则给出节点为根节点，则其下一节点为其右孩子。</li>
+<li>若父节点的不为空<ol>
+<li>若给出节点是父节点的左孩子,则下一节点就是其父节点</li>
+<li>若给出节点是父节点的右孩子<ol>
+<li>若当前节点的右孩子不为空，则下一节点就是其右子树的最左那个节点</li>
+<li>若当前节点的右孩子为空，则下一节点需要沿着父节点一直往搜寻，直到找到一个这样的节点：它是其夫节点的左孩子（如果这样的节点存在，则这就是我们要找的下一个节点）</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">treeNode* <span class="title">getNext</span><span class="params">(treeNode* pNode)</span></span>&#123;</span><br><span class="line">    treeNode *nextNode = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">if</span>(pNode == <span class="literal">NULL</span>)<span class="comment">//情况0</span></span><br><span class="line">		nextNode = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(pNode-&gt;parent == <span class="literal">NULL</span>)<span class="comment">//情况1</span></span><br><span class="line">        nextNode = pNode-&gt;right;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(pNode-&gt;parent-&gt;left == pNode)<span class="comment">//情况2.1</span></span><br><span class="line">            nextNode = pNode-&gt;parent;</span><br><span class="line">        <span class="keyword">else</span>&#123;<span class="comment">//情况2.2</span></span><br><span class="line">            <span class="keyword">if</span>(pNode-&gt;right != <span class="literal">NULL</span>)&#123;<span class="comment">//情况2.2.1</span></span><br><span class="line">                pNode = pNode-&gt;right;</span><br><span class="line">                <span class="keyword">while</span>(pNode-&gt;left != <span class="literal">NULL</span>)</span><br><span class="line">                    pNode = pNode-&gt;left;</span><br><span class="line">                nextNode = pNode;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;<span class="comment">//情况2.2.2</span></span><br><span class="line">                <span class="keyword">while</span>(pNode != <span class="literal">NULL</span> &amp;&amp; pNode-&gt;parent != <span class="literal">NULL</span> &amp;&amp; pNode-&gt;parent-&gt;right == pNode)</span><br><span class="line">                    pNode = pNode-&gt;parent;</span><br><span class="line">                <span class="keyword">if</span>(pNode == <span class="literal">NULL</span>)</span><br><span class="line">                    nextNode = <span class="literal">NULL</span>;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                	nextNode = pNode-&gt;parent;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> nextNode;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/28/jzof-7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JDW">
+      <meta itemprop="description" content="记录进阶之路">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jdw - blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/28/jzof-7/" class="post-title-link" itemprop="url">jzof_7</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-28 22:06:35 / 修改时间：22:08:31" itemprop="dateCreated datePublished" datetime="2020-09-28T22:06:35+08:00">2020-09-28</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="剑指-Offer-07-重建二叉树"><a href="#剑指-Offer-07-重建二叉树" class="headerlink" title="剑指 Offer 07. 重建二叉树"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/zhong-jian-er-cha-shu-lcof/">剑指 Offer 07. 重建二叉树</a></h1><blockquote>
+<p>例：</p>
+<p>前序遍历 preorder = [3,9,20,15,7]<br>中序遍历 inorder = [9,3,15,20,7]</p>
+<p>观察前序遍历和中序遍历的序列关系，我们可知前序遍历序列的第一个元素是根，然后我们在中序遍历序列找到其位置，由中序遍历的特点可知，其左边的元素为当前节点的左子树的中序遍历序列，右边的元素为当前节点右子树的中序遍历序列。这样可以得出左右子树的元素个数，就可以再将中序序列与前序序列一一对应，递归调用生成整棵树。</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">buildTree</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; preorder, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; inorder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len=preorder.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">if</span>(len==<span class="number">0</span>)<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">return</span> buildTree_1(preorder,<span class="number">0</span>,len<span class="number">-1</span>,inorder,<span class="number">0</span>,len<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">TreeNode* <span class="title">buildTree_1</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; preorder,<span class="keyword">int</span> ps,<span class="keyword">int</span> pe ,<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; inorder,<span class="keyword">int</span> is,<span class="keyword">int</span> ie)</span><span class="comment">//辅助函数（ps、pe指代前序序列范围，is、ie指代中序序列范围）</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        TreeNode *root=<span class="keyword">new</span> TreeNode(preorder[ps]);</span><br><span class="line">        <span class="keyword">int</span> i=is;</span><br><span class="line">        <span class="keyword">while</span>(inorder[i]!=preorder[ps])<span class="comment">//查找根节点在中序序列的位置</span></span><br><span class="line">            ++i；</span><br><span class="line">        <span class="comment">//计算左右子树元素个数</span></span><br><span class="line">        <span class="keyword">int</span> leftsize=i-is;</span><br><span class="line">        <span class="keyword">int</span> rightsize=ie-i;</span><br><span class="line">        <span class="comment">//递归生成左右子树</span></span><br><span class="line">        <span class="keyword">if</span>(leftsize!=<span class="number">0</span>)root-&gt;left=buildTree_1(preorder,ps+<span class="number">1</span>,ps+leftsize,inorder,is,is+leftsize<span class="number">-1</span>);</span><br><span class="line">        <span class="keyword">if</span>(rightsize!=<span class="number">0</span>)root-&gt;right=buildTree_1(preorder,ps+leftsize+<span class="number">1</span>,pe,inorder,is+leftsize+<span class="number">1</span>,ie);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/28/jzof-6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JDW">
+      <meta itemprop="description" content="记录进阶之路">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jdw - blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/28/jzof-6/" class="post-title-link" itemprop="url">jzof_6</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-28 22:06:30 / 修改时间：22:08:17" itemprop="dateCreated datePublished" datetime="2020-09-28T22:06:30+08:00">2020-09-28</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="剑指-Offer-06-从尾到头打印链表"><a href="#剑指-Offer-06-从尾到头打印链表" class="headerlink" title="剑指 Offer 06. 从尾到头打印链表"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/cong-wei-dao-tou-da-yin-lian-biao-lcof/">剑指 Offer 06. 从尾到头打印链表</a></h1><blockquote>
+<p>直接用递归或者用栈来模拟递归实现倒序打印链表。</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">reverseTravelList</span><span class="params">(ListNode* head)</span></span>&#123;<span class="comment">//辅助函数</span></span><br><span class="line">        <span class="keyword">if</span>(head == <span class="literal">NULL</span>)<span class="keyword">return</span> ;</span><br><span class="line">        reverseTravelList(head-&gt;next);<span class="comment">//先访问下一节点</span></span><br><span class="line">        ans.push_back(head-&gt;val);<span class="comment">//再打印当前节点的值</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">reversePrint</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        reverseTravelList(head);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ans;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/28/jzof-5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JDW">
+      <meta itemprop="description" content="记录进阶之路">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jdw - blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/28/jzof-5/" class="post-title-link" itemprop="url">jzof_5</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-28 22:06:25 / 修改时间：22:08:00" itemprop="dateCreated datePublished" datetime="2020-09-28T22:06:25+08:00">2020-09-28</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="剑指-Offer-05-替换空格"><a href="#剑指-Offer-05-替换空格" class="headerlink" title="剑指 Offer 05. 替换空格"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/ti-huan-kong-ge-lcof/">剑指 Offer 05. 替换空格</a></h1><blockquote>
+<p>由于题目给出的参数类型是string，我们只能先遍历一次字符串统计空格个数，然后在新建一个字符串，其长度为原来字符串长度加上两倍的空格个数。然后设置两个指针分别指向两个字符串，根据原来字符串中的字符是否为空格做出不同的赋值。</p>
+<p>如果题目给出的参数类型是char<em>或者char[]，则我们可以<em>*从字符串的尾部开始复制</em></em>，避免字符重复移动，增加复杂度。</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">replaceSpace</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> numOfSpace = <span class="number">0</span>;<span class="comment">//空格数量</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">char</span> c : s)<span class="comment">//统计空格个数</span></span><br><span class="line">            <span class="keyword">if</span>(c == <span class="string">&#x27; &#x27;</span>)</span><br><span class="line">                ++numOfSpace;</span><br><span class="line">        <span class="function"><span class="built_in">string</span> <span class="title">ans</span><span class="params">(s.<span class="built_in">size</span>() + <span class="number">2</span>*numOfSpace , <span class="string">&#x27;a&#x27;</span>)</span></span>;<span class="comment">//新建字符串</span></span><br><span class="line">        <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; s.<span class="built_in">size</span>() ; ++i)&#123;<span class="comment">//字符串复制</span></span><br><span class="line">            <span class="keyword">if</span>(s[i] != <span class="string">&#x27; &#x27;</span>)</span><br><span class="line">                ans[j++] = s[i];</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                ans[j++] = <span class="string">&#x27;%&#x27;</span>;</span><br><span class="line">                ans[j++] = <span class="string">&#x27;2&#x27;</span>;</span><br><span class="line">                ans[j++] = <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/28/jzof-4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JDW">
+      <meta itemprop="description" content="记录进阶之路">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jdw - blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/28/jzof-4/" class="post-title-link" itemprop="url">jzof_4</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-28 22:06:17 / 修改时间：22:07:42" itemprop="dateCreated datePublished" datetime="2020-09-28T22:06:17+08:00">2020-09-28</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="剑指-Offer-04-二维数组中的查找"><a href="#剑指-Offer-04-二维数组中的查找" class="headerlink" title="剑指 Offer 04. 二维数组中的查找"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof/">剑指 Offer 04. 二维数组中的查找</a></h1><blockquote>
+<p>矩阵特点：每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。</p>
+<p>我们一般都会从左上角开始搜寻，但是这样会出现错误，若当前元素比目标小，可知，比当前元素大的元素在其下方及右方，此时无法确定搜索的方向。</p>
+<p>当我们从左下角开始搜寻则不一样，<strong>若当前元素比目标小</strong>，可知比当前元素大的元素只在其右方，而当前元素所在列的上方都比其小，所以可以跳过当前元素所在列；<strong>若当前元素比目标大</strong>，可知比当前元素小的元素只在其上方，而当前元素所在行的右方都比其大，所以可以跳过当前元素所在行。重复搜索直到找到元素或越界为止。</p>
+<p>其实，我们从右上角搜也是可以的，但是从右下角开始搜索不行。</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">findNumberIn2DArray</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//从左下角搜索</span></span><br><span class="line">        <span class="keyword">int</span> row = matrix.<span class="built_in">size</span>() ;</span><br><span class="line">        <span class="keyword">if</span>(row == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">int</span> col = matrix[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">int</span> i = row - <span class="number">1</span> , j = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(i &gt;= <span class="number">0</span> &amp;&amp; i &lt; row &amp;&amp; j &gt;= <span class="number">0</span> &amp;&amp; j &lt; col)&#123;</span><br><span class="line">            <span class="keyword">if</span>(matrix[i][j] == target)</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(matrix[i][j] &gt; target)</span><br><span class="line">                --i;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                ++j;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/28/jzof-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JDW">
+      <meta itemprop="description" content="记录进阶之路">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jdw - blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/28/jzof-3/" class="post-title-link" itemprop="url">jzof_3</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-28 22:05:29 / 修改时间：22:06:07" itemprop="dateCreated datePublished" datetime="2020-09-28T22:05:29+08:00">2020-09-28</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="剑指-Offer-03-数组中重复的数字"><a href="#剑指-Offer-03-数组中重复的数字" class="headerlink" title="剑指 Offer 03. 数组中重复的数字"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/shu-zu-zhong-zhong-fu-de-shu-zi-lcof/">剑指 Offer 03. 数组中重复的数字</a></h1><p>题解：</p>
+<ol>
+<li><p>采用一个数组来标记数字出现次数，复杂度：时间：O(N)，空间：O(N)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">findRepeatNumber</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">m</span><span class="params">(nums.<span class="built_in">size</span>() , <span class="number">0</span>)</span></span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num:nums)&#123;</span><br><span class="line">            <span class="keyword">if</span>(++m[num] &gt; <span class="number">1</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> num;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>排序，然后遍历数组，看前后是否有两个相同的元素，复杂度：时间：O(N*logN)，空间：O(1)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">findRepeatNumber</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        sort(nums.<span class="built_in">begin</span>() , nums.<span class="built_in">end</span>());</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; nums.<span class="built_in">size</span>() - <span class="number">1</span> ; ++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] == nums[i+<span class="number">1</span>])&#123;</span><br><span class="line">                <span class="keyword">return</span> nums[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重拍数组，从头到尾访问数组，访问到下标为i，大小为m的元素，若i等于m，则跳过该元素；若i不等于m，则与下标为m的元素比较，若m与下标为m的元素大小相等，则直接返回元素，否则交换两个元素。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">findRepeatNumber</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; nums.<span class="built_in">size</span>() ; ++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] == i)</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(nums[i] == nums[nums[i]])</span><br><span class="line">                <span class="keyword">return</span> nums[i];</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                swap(nums[i] , nums[nums[i]]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
       
     </div>
 
@@ -980,7 +870,7 @@ height[u]=max(height[v])+1;(v为所有与u的邻接点)</script>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1046,12 +936,12 @@ height[u]=max(height[v])+1;(v为所有与u的邻接点)</script>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -1148,59 +1038,6 @@ height[u]=max(height[v])+1;(v为所有与u的邻接点)</script>
   
 
   
-      
-
-<script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      loader: {
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    (function () {
-      var script = document.createElement('script');
-      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
-
-    
 
   
 
