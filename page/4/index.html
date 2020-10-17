@@ -127,7 +127,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">8</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">9</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -137,7 +137,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">54</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">59</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -190,6 +190,340 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/28/jzof-15/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JDW">
+      <meta itemprop="description" content="记录进阶之路">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jdw - blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/28/jzof-15/" class="post-title-link" itemprop="url">jzof_15</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-28 22:16:08 / 修改时间：23:17:46" itemprop="dateCreated datePublished" datetime="2020-09-28T22:16:08+08:00">2020-09-28</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="剑指-Offer-15-二进制中1的个数"><a href="#剑指-Offer-15-二进制中1的个数" class="headerlink" title="剑指 Offer 15. 二进制中1的个数"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/er-jin-zhi-zhong-1de-ge-shu-lcof/">剑指 Offer 15. 二进制中1的个数</a></h1><p>两种方法：</p>
+<ul>
+<li><h2 id="第一种：逐位统计"><a href="#第一种：逐位统计" class="headerlink" title="第一种：逐位统计"></a>第一种：逐位统计</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">hammingWeight</span><span class="params">(<span class="keyword">uint32_t</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(n)&#123;</span><br><span class="line">            <span class="keyword">if</span>(n &amp; <span class="number">1</span>)++ans;</span><br><span class="line">            n = n &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="上面这种解法在这条题目是可行的，因为输入的是无符号数。但是一旦输入的是有符号数且为负数，就会出现意料之外的事情。"><a href="#上面这种解法在这条题目是可行的，因为输入的是无符号数。但是一旦输入的是有符号数且为负数，就会出现意料之外的事情。" class="headerlink" title="上面这种解法在这条题目是可行的，因为输入的是无符号数。但是一旦输入的是有符号数且为负数，就会出现意料之外的事情。"></a>上面这种解法在这条题目是可行的，因为输入的是无符号数。但是一旦输入的是有符号数且为负数，就会出现意料之外的事情。</h3><blockquote>
+<p>我们先来复习一下数字左移、右移的步骤</p>
+<p>首先是左移：m&lt;&lt;n表示m左移n位，将m最左边的n位弃掉，然后在最右边补n个0</p>
+<p>再接这是右移：m&gt;&gt;n表示m右移n位，如果m是无符号数，则将m的最右n位弃掉，然后在最左边补n个0，如果m不是无符号数的话，则将m的右n位弃掉，然后在最左边补n个与符号位相同的值。</p>
+</blockquote>
+<p>有了这个知识后，我们可知如果负数右移的话，补的是1，这样移动的话，最终n是不会变为0的，也成了死循环。所以有了一下这种解法：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">hammingWeight</span><span class="params">(<span class="keyword">uint32_t</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">32</span>; ++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(n&amp;(<span class="number">1</span>&lt;&lt;i))</span><br><span class="line">                ++ans;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>先用1与n作位于操作，统计最低位是否为1，然后1左移一位，统计左数第二位是否为1，以此类推。</p>
+</blockquote>
+<ul>
+<li><h2 id="位运算："><a href="#位运算：" class="headerlink" title="位运算："></a>位运算：</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">hammingWeight</span><span class="params">(<span class="keyword">uint32_t</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(n)&#123;</span><br><span class="line">            <span class="comment">//n&amp;(n−1) 解析： 二进制数字 nn 最右边的 11 变成 00 ，其余不变。</span></span><br><span class="line">            n&amp;=(n<span class="number">-1</span>);</span><br><span class="line">            ++ans;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>我们观察可知n-1就是将n的最右边的1变为0，这个位右边的0变为1，n&amp;(n-1)就是将n的最右边1及其右边全部位变为0，这样可以减少迭代次数。</p>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/28/jzof-14/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JDW">
+      <meta itemprop="description" content="记录进阶之路">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jdw - blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/28/jzof-14/" class="post-title-link" itemprop="url">jzof_14</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-28 22:16:03 / 修改时间：23:17:36" itemprop="dateCreated datePublished" datetime="2020-09-28T22:16:03+08:00">2020-09-28</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="剑指-Offer-14-I-剪绳子"><a href="#剑指-Offer-14-I-剪绳子" class="headerlink" title="剑指 Offer 14- I. 剪绳子"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/jian-sheng-zi-lcof/">剑指 Offer 14- I. 剪绳子</a></h1><h1 id="剑指-Offer-14-II-剪绳子-II"><a href="#剑指-Offer-14-II-剪绳子-II" class="headerlink" title="剑指 Offer 14- II. 剪绳子 II"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/jian-sheng-zi-ii-lcof/">剑指 Offer 14- II. 剪绳子 II</a></h1><ul>
+<li><h2 id="第一题：我们观察求解过程，每一步都有一个最优解，每一部分都是可以分为规模更小的题目来解答，满足动态规划的求解特征。回到问题：一段绳子可以减为两段，然后剪出来的两段绳子可以继续剪。由于我们不止那种剪法是最优的，所以要检查所有剪法，求其中乘积最大值。至于证明，不会！参考其他人的证明："><a href="#第一题：我们观察求解过程，每一步都有一个最优解，每一部分都是可以分为规模更小的题目来解答，满足动态规划的求解特征。回到问题：一段绳子可以减为两段，然后剪出来的两段绳子可以继续剪。由于我们不止那种剪法是最优的，所以要检查所有剪法，求其中乘积最大值。至于证明，不会！参考其他人的证明：" class="headerlink" title="第一题：我们观察求解过程，每一步都有一个最优解，每一部分都是可以分为规模更小的题目来解答，满足动态规划的求解特征。回到问题：一段绳子可以减为两段，然后剪出来的两段绳子可以继续剪。由于我们不止那种剪法是最优的，所以要检查所有剪法，求其中乘积最大值。至于证明，不会！参考其他人的证明："></a>第一题：我们观察求解过程，每一步都有一个最优解，每一部分都是可以分为规模更小的题目来解答，满足动态规划的求解特征。回到问题：一段绳子可以减为两段，然后剪出来的两段绳子可以继续剪。由于我们不止那种剪法是最优的，所以要检查所有剪法，求其中乘积最大值。至于证明，不会！参考其他人的证明：</h2></li>
+</ul>
+<h3 id="贪心法证明"><a href="#贪心法证明" class="headerlink" title="贪心法证明"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/jian-sheng-zi-ii-lcof/solution/mian-shi-ti-14-ii-jian-sheng-zi-iitan-xin-er-fen-f/">贪心法证明</a></h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">cuttingRope</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//dp[i]代表integerBreak(i)</span></span><br><span class="line">        <span class="comment">//i至少由两个数(x,y)之和组成，(x,y)可以进行同样的操作（分成两个数）</span></span><br><span class="line">        <span class="keyword">if</span>(n&lt;<span class="number">2</span>)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">2</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">3</span>)<span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">        <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">dp</span><span class="params">(n+<span class="number">1</span>,<span class="number">0</span>)</span></span>;</span><br><span class="line">        <span class="comment">//将前面小的值先写入</span></span><br><span class="line">        dp[<span class="number">1</span>]=<span class="number">1</span>;dp[<span class="number">2</span>]=<span class="number">2</span>;dp[<span class="number">3</span>]=<span class="number">3</span>;</span><br><span class="line">        <span class="comment">//从长度为4的绳子开始</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">4</span>;i&lt;=n;++i)&#123;</span><br><span class="line">            <span class="keyword">int</span> Max = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=i/<span class="number">2</span>;++j)&#123;<span class="comment">//检查所有剪法，求其中乘积最大值</span></span><br><span class="line">                Max = <span class="built_in">max</span>(Max, dp[j]*dp[i - j]);</span><br><span class="line">            &#125;</span><br><span class="line">            dp[i] = Max;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><h2 id="第二题：其实第一题和第二题几乎一样，就是输入n的范围不同，第二题的范围更大，如果我们同样使用动态规划来解决第二题会发现超时，因为动态规划的复杂度为O-N-2-所以要寻求更高效的办法—贪心法。我们需要尽量剪出长度为3的绳子，这样最后得出乘积最大。"><a href="#第二题：其实第一题和第二题几乎一样，就是输入n的范围不同，第二题的范围更大，如果我们同样使用动态规划来解决第二题会发现超时，因为动态规划的复杂度为O-N-2-所以要寻求更高效的办法—贪心法。我们需要尽量剪出长度为3的绳子，这样最后得出乘积最大。" class="headerlink" title="第二题：其实第一题和第二题几乎一样，就是输入n的范围不同，第二题的范围更大，如果我们同样使用动态规划来解决第二题会发现超时，因为动态规划的复杂度为O(N^2).所以要寻求更高效的办法—贪心法。我们需要尽量剪出长度为3的绳子，这样最后得出乘积最大。"></a>第二题：其实第一题和第二题几乎一样，就是输入n的范围不同，第二题的范围更大，如果我们同样使用动态规划来解决第二题会发现超时，因为动态规划的复杂度为O(N^2).所以要寻求更高效的办法—贪心法。我们需要尽量剪出长度为3的绳子，这样最后得出乘积最大。</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">cuttingRope</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//如果n&lt;3，直接返回n-1</span></span><br><span class="line">        <span class="keyword">if</span>(n &lt;= <span class="number">3</span>)<span class="keyword">return</span> n - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> ans = <span class="number">1</span>;</span><br><span class="line">        <span class="comment">//尽量减出长度为3的绳子</span></span><br><span class="line">        <span class="keyword">int</span> timesOf3 = n / <span class="number">3</span>;</span><br><span class="line">        <span class="comment">//如果减了若干个长度为三大绳子后，还剩一个1，这样的话，就是有一个4</span></span><br><span class="line">        <span class="comment">//如果长度为4的话分为2、2比3、1好，所以此时要将长度为3的绳子段数减一</span></span><br><span class="line">        <span class="keyword">if</span>(n - timesOf3*<span class="number">3</span> == <span class="number">1</span>)timesOf3--;</span><br><span class="line">        <span class="comment">//如果绳子减了若干段长度为3的绳子后，还剩下的要乘上</span></span><br><span class="line">        <span class="keyword">if</span>(n - timesOf3*<span class="number">3</span>)ans *= n - timesOf3*<span class="number">3</span>; </span><br><span class="line">        <span class="comment">//本来可以直接用pow(3,timesOf3),但是这样会溢出，所以用while</span></span><br><span class="line">        <span class="keyword">while</span>(timesOf3--)ans = (ans*<span class="number">3</span>%<span class="number">1000000007</span>);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/28/jzof-13/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JDW">
+      <meta itemprop="description" content="记录进阶之路">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jdw - blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/28/jzof-13/" class="post-title-link" itemprop="url">jzof_13</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-28 22:15:58 / 修改时间：23:17:17" itemprop="dateCreated datePublished" datetime="2020-09-28T22:15:58+08:00">2020-09-28</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="剑指-Offer-13-机器人的运动范围"><a href="#剑指-Offer-13-机器人的运动范围" class="headerlink" title="剑指 Offer 13. 机器人的运动范围"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/ji-qi-ren-de-yun-dong-fan-wei-lcof/">剑指 Offer 13. 机器人的运动范围</a></h1><p>见到题目的时候，你可能回想直接遍历二维数组的每个坐标看有几个左边是满足和小于等于k的，那这个数就是答案。但是仔细一想，有没有这种可能一个坐标是满足和小于等于k，但是它无法有其他满足条件的点走过来。答案是有的。所以我们只能从[0,0]进行bfs，将其周围满足条件的点入队，同时也要标记以入队的点，防止一个点重复入队。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">//检查[x,y]之“和&quot;是否小于等于k</span></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(x)&#123;</span><br><span class="line">            sum += x % <span class="number">10</span>;</span><br><span class="line">            x /= <span class="number">10</span>; </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(y)&#123;</span><br><span class="line">            sum += y % <span class="number">10</span>;</span><br><span class="line">            y /= <span class="number">10</span>; </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum &lt;= k;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">movingCount</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//上下左右四个方向</span></span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; direction = &#123;<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">1</span>;</span><br><span class="line">        <span class="comment">//访问标志矩阵</span></span><br><span class="line">        <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt;&gt; <span class="title">visited</span><span class="params">(m, <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt;(n, <span class="literal">false</span>))</span></span>; </span><br><span class="line">        visited[<span class="number">0</span>][<span class="number">0</span>] = <span class="literal">true</span>;</span><br><span class="line">        <span class="comment">//bfs</span></span><br><span class="line">        <span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">        q.push(<span class="number">0</span>);q.push(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">while</span>(!q.empty())&#123;</span><br><span class="line">            <span class="keyword">int</span> x = q.front(); q.pop();</span><br><span class="line">            <span class="keyword">int</span> y = q.front(); q.pop();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; ++i)&#123;</span><br><span class="line">                <span class="keyword">int</span> newx = x + direction[<span class="number">2</span>*i], newy = y + direction[<span class="number">2</span>*i + <span class="number">1</span>];</span><br><span class="line">                <span class="comment">//如果坐标越界或者已经访问过的话就跳过该点</span></span><br><span class="line">                <span class="keyword">if</span>(newx == m || newx &lt; <span class="number">0</span> || newy == n || newy &lt; <span class="number">0</span> || visited[newx][newy])</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span>(check(newx, newy, k))&#123;</span><br><span class="line">                    ++ans;</span><br><span class="line">                    visited[newx][newy] = <span class="literal">true</span>;</span><br><span class="line">                    q.push(newx); q.push(newy);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/28/jzof-12/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JDW">
+      <meta itemprop="description" content="记录进阶之路">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jdw - blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/28/jzof-12/" class="post-title-link" itemprop="url">jzof_12</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-28 22:07:00 / 修改时间：22:09:34" itemprop="dateCreated datePublished" datetime="2020-09-28T22:07:00+08:00">2020-09-28</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="剑指-Offer-12-矩阵中的路径"><a href="#剑指-Offer-12-矩阵中的路径" class="headerlink" title="剑指 Offer 12. 矩阵中的路径"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/ju-zhen-zhong-de-lu-jing-lcof/">剑指 Offer 12. 矩阵中的路径</a></h1><h2 id="回溯法："><a href="#回溯法：" class="headerlink" title="回溯法："></a>回溯法：</h2><blockquote>
+<p>见题“路径可以从矩阵中的任意一格开始，每一步可以在矩阵中向左、右、上、下移动一格”我们可得知每一个位置有四个方向可以走，如果走不通在回溯到上一个节点尝试其他方向。同时由于要标记已走过的路径，需要一个矩阵visited来标记位置是否已经走过。</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">dfs</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">char</span>&gt;&gt;&amp; board, <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; visited, <span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> pos)</span></span>&#123;</span><br><span class="line">        <span class="comment">//如果走完了字符串</span></span><br><span class="line">        <span class="keyword">if</span>(pos == WORD.<span class="built_in">size</span>())<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="comment">//判断位置是否越界或者是否已经访问过</span></span><br><span class="line">        <span class="keyword">if</span>(x &lt; <span class="number">0</span> || x == row || y &lt; <span class="number">0</span> || y == col || visited[x][y] || WORD[pos] != board[x][y])<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="comment">//标记位置已访问</span></span><br><span class="line">        visited[x][y] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">bool</span> flag = <span class="literal">false</span>;</span><br><span class="line">        <span class="comment">//四个方向中只要有一个走通就行</span></span><br><span class="line">        flag = dfs(board , visited, x - <span class="number">1</span>, y, pos + <span class="number">1</span>) || dfs(board , visited, x + <span class="number">1</span>, y, pos + <span class="number">1</span>) || dfs(board , visited, x, y - <span class="number">1</span>, pos + <span class="number">1</span>) || dfs(board , visited, x, y + <span class="number">1</span>, pos + <span class="number">1</span>);</span><br><span class="line">        <span class="comment">//恢复原状</span></span><br><span class="line">        visited[x][y] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> flag;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">exist</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">char</span>&gt;&gt;&amp; board, <span class="built_in">string</span> <span class="keyword">word</span>)</span> </span>&#123;</span><br><span class="line">        row = board.<span class="built_in">size</span>();</span><br><span class="line">        col = board[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        WORD = <span class="keyword">word</span>;</span><br><span class="line">        <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; <span class="title">visited</span><span class="params">(row , <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(col , <span class="number">0</span>))</span></span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; row; ++i)&#123;<span class="comment">//遍历矩阵</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; col; ++j)&#123;</span><br><span class="line">                <span class="keyword">if</span>(board[i][j] == <span class="keyword">word</span>[<span class="number">0</span>])&#123;</span><br><span class="line">                    <span class="keyword">if</span>(dfs(board, visited, i , j , <span class="number">0</span>))&#123;<span class="comment">//如果字符与字符串第一个字符相同，就以该点为起点作dfs</span></span><br><span class="line">                        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> row, col;</span><br><span class="line">    <span class="built_in">string</span> WORD;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/28/jzof-11/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JDW">
+      <meta itemprop="description" content="记录进阶之路">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jdw - blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/28/jzof-11/" class="post-title-link" itemprop="url">jzof_11</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-28 22:06:55 / 修改时间：22:09:21" itemprop="dateCreated datePublished" datetime="2020-09-28T22:06:55+08:00">2020-09-28</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="剑指-Offer-11-旋转数组的最小数字"><a href="#剑指-Offer-11-旋转数组的最小数字" class="headerlink" title="剑指 Offer 11. 旋转数组的最小数字"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/xuan-zhuan-shu-zu-de-zui-xiao-shu-zi-lcof/">剑指 Offer 11. 旋转数组的最小数字</a></h1><p>观察旋转数组的特性，我们可知数组一共有两个递增序列组成，可能第二个递增序列的元素个数为0。</p>
+<ol>
+<li>如果中间元素比最后一个元素要小的话，证明最小元素是在第一个递增序列里。移动右指针。</li>
+<li>如果中间元素比最后一个元素要大的话，证明最小元素是在第二个递增序列里。移动左指针。</li>
+<li>如果中间元素和最后一个元素相等的话，证明最小元素是在第一个递增序列里。将右指针左移一位。</li>
+</ol>
+<blockquote>
+<p>相信前面两点很容易理解，问题是第三点，为何要“将右指针左移一位”。由于第三种情况我们不能判断最小元素是位于前半段还是后半段，所以不能随便忽略某一部分。最右元素与中间元素相等，无论最右元素是否为最小元素，我们都可以将右指针左移动一位来缩小范围。因为最右元素有中间元素代替。</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">minArray</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; numbers)</span></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(left &lt;right)&#123;    </span><br><span class="line">     	mid = (left + right) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(numbers[right] &lt; numbers[mid])</span><br><span class="line">        	left = mid + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span>  <span class="keyword">if</span>(numbers[mid] &lt; numbers[right])  </span><br><span class="line">        	right = mid;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        	--right;          </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> numbers[left];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -537,365 +871,6 @@ fib(n) = \left[ \begin{matrix}1&1\\1&0 \end{matrix} \right]^{n-1}</script><p>其
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/28/jzof-5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JDW">
-      <meta itemprop="description" content="记录进阶之路">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jdw - blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/28/jzof-5/" class="post-title-link" itemprop="url">jzof_5</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-09-28 22:06:25 / 修改时间：22:08:00" itemprop="dateCreated datePublished" datetime="2020-09-28T22:06:25+08:00">2020-09-28</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="剑指-Offer-05-替换空格"><a href="#剑指-Offer-05-替换空格" class="headerlink" title="剑指 Offer 05. 替换空格"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/ti-huan-kong-ge-lcof/">剑指 Offer 05. 替换空格</a></h1><blockquote>
-<p>由于题目给出的参数类型是string，我们只能先遍历一次字符串统计空格个数，然后在新建一个字符串，其长度为原来字符串长度加上两倍的空格个数。然后设置两个指针分别指向两个字符串，根据原来字符串中的字符是否为空格做出不同的赋值。</p>
-<p>如果题目给出的参数类型是char<em>或者char[]，则我们可以<em>*从字符串的尾部开始复制</em></em>，避免字符重复移动，增加复杂度。</p>
-</blockquote>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">replaceSpace</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> numOfSpace = <span class="number">0</span>;<span class="comment">//空格数量</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">char</span> c : s)<span class="comment">//统计空格个数</span></span><br><span class="line">            <span class="keyword">if</span>(c == <span class="string">&#x27; &#x27;</span>)</span><br><span class="line">                ++numOfSpace;</span><br><span class="line">        <span class="function"><span class="built_in">string</span> <span class="title">ans</span><span class="params">(s.<span class="built_in">size</span>() + <span class="number">2</span>*numOfSpace , <span class="string">&#x27;a&#x27;</span>)</span></span>;<span class="comment">//新建字符串</span></span><br><span class="line">        <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; s.<span class="built_in">size</span>() ; ++i)&#123;<span class="comment">//字符串复制</span></span><br><span class="line">            <span class="keyword">if</span>(s[i] != <span class="string">&#x27; &#x27;</span>)</span><br><span class="line">                ans[j++] = s[i];</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                ans[j++] = <span class="string">&#x27;%&#x27;</span>;</span><br><span class="line">                ans[j++] = <span class="string">&#x27;2&#x27;</span>;</span><br><span class="line">                ans[j++] = <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/28/jzof-4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JDW">
-      <meta itemprop="description" content="记录进阶之路">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jdw - blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/28/jzof-4/" class="post-title-link" itemprop="url">jzof_4</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-09-28 22:06:17 / 修改时间：22:07:42" itemprop="dateCreated datePublished" datetime="2020-09-28T22:06:17+08:00">2020-09-28</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="剑指-Offer-04-二维数组中的查找"><a href="#剑指-Offer-04-二维数组中的查找" class="headerlink" title="剑指 Offer 04. 二维数组中的查找"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof/">剑指 Offer 04. 二维数组中的查找</a></h1><blockquote>
-<p>矩阵特点：每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。</p>
-<p>我们一般都会从左上角开始搜寻，但是这样会出现错误，若当前元素比目标小，可知，比当前元素大的元素在其下方及右方，此时无法确定搜索的方向。</p>
-<p>当我们从左下角开始搜寻则不一样，<strong>若当前元素比目标小</strong>，可知比当前元素大的元素只在其右方，而当前元素所在列的上方都比其小，所以可以跳过当前元素所在列；<strong>若当前元素比目标大</strong>，可知比当前元素小的元素只在其上方，而当前元素所在行的右方都比其大，所以可以跳过当前元素所在行。重复搜索直到找到元素或越界为止。</p>
-<p>其实，我们从右上角搜也是可以的，但是从右下角开始搜索不行。</p>
-</blockquote>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">findNumberIn2DArray</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//从左下角搜索</span></span><br><span class="line">        <span class="keyword">int</span> row = matrix.<span class="built_in">size</span>() ;</span><br><span class="line">        <span class="keyword">if</span>(row == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">int</span> col = matrix[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">int</span> i = row - <span class="number">1</span> , j = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(i &gt;= <span class="number">0</span> &amp;&amp; i &lt; row &amp;&amp; j &gt;= <span class="number">0</span> &amp;&amp; j &lt; col)&#123;</span><br><span class="line">            <span class="keyword">if</span>(matrix[i][j] == target)</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(matrix[i][j] &gt; target)</span><br><span class="line">                --i;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                ++j;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/28/jzof-3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JDW">
-      <meta itemprop="description" content="记录进阶之路">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jdw - blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/28/jzof-3/" class="post-title-link" itemprop="url">jzof_3</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-09-28 22:05:29 / 修改时间：22:06:07" itemprop="dateCreated datePublished" datetime="2020-09-28T22:05:29+08:00">2020-09-28</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="剑指-Offer-03-数组中重复的数字"><a href="#剑指-Offer-03-数组中重复的数字" class="headerlink" title="剑指 Offer 03. 数组中重复的数字"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/shu-zu-zhong-zhong-fu-de-shu-zi-lcof/">剑指 Offer 03. 数组中重复的数字</a></h1><p>题解：</p>
-<ol>
-<li><p>采用一个数组来标记数字出现次数，复杂度：时间：O(N)，空间：O(N)</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">findRepeatNumber</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">m</span><span class="params">(nums.<span class="built_in">size</span>() , <span class="number">0</span>)</span></span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num:nums)&#123;</span><br><span class="line">            <span class="keyword">if</span>(++m[num] &gt; <span class="number">1</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> num;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<ol>
-<li><p>排序，然后遍历数组，看前后是否有两个相同的元素，复杂度：时间：O(N*logN)，空间：O(1)</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">findRepeatNumber</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        sort(nums.<span class="built_in">begin</span>() , nums.<span class="built_in">end</span>());</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; nums.<span class="built_in">size</span>() - <span class="number">1</span> ; ++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] == nums[i+<span class="number">1</span>])&#123;</span><br><span class="line">                <span class="keyword">return</span> nums[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>重拍数组，从头到尾访问数组，访问到下标为i，大小为m的元素，若i等于m，则跳过该元素；若i不等于m，则与下标为m的元素比较，若m与下标为m的元素大小相等，则直接返回元素，否则交换两个元素。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">findRepeatNumber</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; nums.<span class="built_in">size</span>() ; ++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] == i)</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(nums[i] == nums[nums[i]])</span><br><span class="line">                <span class="keyword">return</span> nums[i];</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                swap(nums[i] , nums[nums[i]]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/04/redis-basical-structure/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JDW">
-      <meta itemprop="description" content="记录进阶之路">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jdw - blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/04/redis-basical-structure/" class="post-title-link" itemprop="url">Redis底层数据结构的实现</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-09-04 15:29:07 / 修改时间：15:34:18" itemprop="dateCreated datePublished" datetime="2020-09-04T15:29:07+08:00">2020-09-04</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="简单动态字符串（simple-dynamic-string，SDS）"><a href="#简单动态字符串（simple-dynamic-string，SDS）" class="headerlink" title="简单动态字符串（simple dynamic string，SDS）"></a>简单动态字符串（simple dynamic string，SDS）</h2><h3 id="SDS的定义："><a href="#SDS的定义：" class="headerlink" title="SDS的定义："></a>SDS的定义：</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sdshdr</span> &#123;</span></span><br><span class="line">	<span class="comment">//记录SDS保存字符串的长度</span></span><br><span class="line">	<span class="keyword">int</span> len;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//记录buf数组中未使用的字节数量</span></span><br><span class="line">	<span class="keyword">int</span> <span class="built_in">free</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//字节数组，用于保存字符串</span></span><br><span class="line">	<span class="keyword">char</span> buf[];</span><br><span class="line">&#125;；</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/09/04/redis-basical-structure/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/02/gcc-g-gdb/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JDW">
-      <meta itemprop="description" content="记录进阶之路">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jdw - blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/02/gcc-g-gdb/" class="post-title-link" itemprop="url">gcc、g++、gdb常用参数</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-09-02 10:40:45 / 修改时间：10:42:57" itemprop="dateCreated datePublished" datetime="2020-09-02T10:40:45+08:00">2020-09-02</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="gcc、g-编译工作的流程"><a href="#gcc、g-编译工作的流程" class="headerlink" title="gcc、g++编译工作的流程"></a>gcc、g++编译工作的流程</h2><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>部件</th>
-<th>负责工作</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>预处理器（cpp）</td>
-<td>预处理生成.i文件</td>
-</tr>
-<tr>
-<td>编译器（egcs）</td>
-<td>将预处理后的文件转换成汇编语言，生成.文件</td>
-</tr>
-<tr>
-<td>汇编器（as）</td>
-<td>将汇编语言文件变为目标机器代码，生成.o文件</td>
-</tr>
-<tr>
-<td>链接器（ld）</td>
-<td>连接目标代码，生成可执行程序</td>
-</tr>
-</tbody>
-</table>
-</div>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/09/02/gcc-g-gdb/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -965,12 +940,12 @@ fib(n) = \left[ \begin{matrix}1&1\\1&0 \end{matrix} \right]^{n-1}</script><p>其
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-count">59</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -1067,59 +1042,6 @@ fib(n) = \left[ \begin{matrix}1&1\\1&0 \end{matrix} \right]^{n-1}</script><p>其
   
 
   
-      
-
-<script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      loader: {
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    (function () {
-      var script = document.createElement('script');
-      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
-
-    
 
   
 

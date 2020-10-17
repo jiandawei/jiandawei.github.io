@@ -127,7 +127,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">8</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">9</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -137,7 +137,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">54</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">59</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -190,6 +190,318 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/28/jzof-38/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JDW">
+      <meta itemprop="description" content="记录进阶之路">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jdw - blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/28/jzof-38/" class="post-title-link" itemprop="url">jzof_38</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-28 23:24:27 / 修改时间：23:25:53" itemprop="dateCreated datePublished" datetime="2020-09-28T23:24:27+08:00">2020-09-28</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="剑指-Offer-38-字符串的排列"><a href="#剑指-Offer-38-字符串的排列" class="headerlink" title="剑指 Offer 38. 字符串的排列"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/zi-fu-chuan-de-pai-lie-lcof/">剑指 Offer 38. 字符串的排列</a></h1><h2 id="重点："><a href="#重点：" class="headerlink" title="重点："></a>重点：</h2><ol>
+<li>“所有排列”</li>
+<li>“任意顺序返回”</li>
+<li>“不能有重复元素”</li>
+</ol>
+<h2 id="假设这道题给的字符串中各个字符不相同，则可以用算法课上学的perm1（基于交换的），就算字符串中有相同字符，也可以通过set去重，但是这样效率贼低。下面先贴用set去重的代码："><a href="#假设这道题给的字符串中各个字符不相同，则可以用算法课上学的perm1（基于交换的），就算字符串中有相同字符，也可以通过set去重，但是这样效率贼低。下面先贴用set去重的代码：" class="headerlink" title="假设这道题给的字符串中各个字符不相同，则可以用算法课上学的perm1（基于交换的），就算字符串中有相同字符，也可以通过set去重，但是这样效率贼低。下面先贴用set去重的代码："></a>假设这道题给的字符串中各个字符不相同，则可以用算法课上学的perm1（基于交换的），就算字符串中有相同字符，也可以通过set去重，但是这样效率贼低。下面先贴用set去重的代码：</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">set</span>&lt;<span class="built_in">string</span>&gt; SET;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">helper</span><span class="params">(<span class="keyword">int</span> index, <span class="built_in">string</span> &amp;s)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(index == s.<span class="built_in">size</span>())SET.insert(s);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = index; i &lt; s.<span class="built_in">size</span>(); ++i)&#123;</span><br><span class="line">            swap(s[i], s[index]);</span><br><span class="line">            helper(index + <span class="number">1</span>, s);</span><br><span class="line">            swap(s[i], s[index]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; <span class="title">permutation</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        helper(<span class="number">0</span>, s);</span><br><span class="line">        <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; <span class="title">ans</span><span class="params">(SET.<span class="built_in">begin</span>(), SET.<span class="built_in">end</span>())</span></span>;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>排列方案数量： 对于一个长度为 n的字符串（假设字符互不重复），其排列共有n!种方案。</p>
+<p>排列方案的生成方法： 根据字符串排列的特点，考虑深度优先搜索所有排列方案。即通过字符交换，先固定第 1 位字符（ n 种情况）、再固定第 2 位字符（ n−1 种情况）、… 、最后固定第 n 位字符（ 1 种情况</p>
+<p>当字符串出现重复字符时，会出现相同的方案，我们可以通过剪枝操作，就说如果当前位置，已经固定了某个字符时，接下来在其后面寻找代替字符时（通过交换），如果这个字符已经在之前固定了一次，则不用在固定多一次（交换）。可以用在每个位置可以用set来达到这效果。</p>
+<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/zi-fu-chuan-de-pai-lie-lcof/solution/mian-shi-ti-38-zi-fu-chuan-de-pai-lie-hui-su-fa-by/">参考链接</a></h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; ans;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">helper</span><span class="params">(<span class="keyword">int</span> index, <span class="built_in">string</span> &amp;s)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(index == s.<span class="built_in">size</span>())ans.push_back(s);</span><br><span class="line">        <span class="built_in">set</span>&lt;<span class="keyword">char</span>&gt; SET;<span class="comment">//用set来记录当前位置已经出现过的字符</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = index; i &lt; s.<span class="built_in">size</span>(); ++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(SET.count(s[i]))<span class="keyword">continue</span>;<span class="comment">//已经出现过的话，则直接跳过</span></span><br><span class="line">            <span class="keyword">else</span> SET.insert(s[i]);<span class="comment">//否则加入set</span></span><br><span class="line">            <span class="comment">//通过交换，来遍历在此位置所有放的字符</span></span><br><span class="line">            swap(s[i], s[index]);</span><br><span class="line">            helper(index + <span class="number">1</span>, s);</span><br><span class="line">            swap(s[i], s[index]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; <span class="title">permutation</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        helper(<span class="number">0</span>, s);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/28/jzof-37/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JDW">
+      <meta itemprop="description" content="记录进阶之路">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jdw - blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/28/jzof-37/" class="post-title-link" itemprop="url">jzof_37</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-28 23:24:23 / 修改时间：23:25:39" itemprop="dateCreated datePublished" datetime="2020-09-28T23:24:23+08:00">2020-09-28</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="剑指-Offer-37-序列化二叉树"><a href="#剑指-Offer-37-序列化二叉树" class="headerlink" title="剑指 Offer 37. 序列化二叉树"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/xu-lie-hua-er-cha-shu-lcof/">剑指 Offer 37. 序列化二叉树</a></h1><h2 id="一共有两个工作："><a href="#一共有两个工作：" class="headerlink" title="一共有两个工作："></a>一共有两个工作：</h2><ul>
+<li><h2 id="序列化：就是层次遍历，然后用字符串记录节点的值，还有加入“null”的时机，只有当前节点所在深度小于树的深度时才需要加入“null”，还有一个非常重要的点：字符串拼接。就如serialize函数中-ans-“-”-to-string-tmp-gt-left-gt-val-如果改为ans-ans-“-”-to-string-tmp-gt-left-gt-val-的话，无论是时间或空间消耗都会上升一个数量级。leetcode上别人的解释-、常见字符串拼接方法效率比较-、csdn上的解释"><a href="#序列化：就是层次遍历，然后用字符串记录节点的值，还有加入“null”的时机，只有当前节点所在深度小于树的深度时才需要加入“null”，还有一个非常重要的点：字符串拼接。就如serialize函数中-ans-“-”-to-string-tmp-gt-left-gt-val-如果改为ans-ans-“-”-to-string-tmp-gt-left-gt-val-的话，无论是时间或空间消耗都会上升一个数量级。leetcode上别人的解释-、常见字符串拼接方法效率比较-、csdn上的解释" class="headerlink" title="序列化：就是层次遍历，然后用字符串记录节点的值，还有加入“null”的时机，只有当前节点所在深度小于树的深度时才需要加入“null”，还有一个非常重要的点：字符串拼接。就如serialize函数中 ans += (“,” + to_string(tmp-&gt;left-&gt;val)); 如果改为ans = ans + “,” + to_string(tmp-&gt;left-&gt;val);的话，无论是时间或空间消耗都会上升一个数量级。leetcode上别人的解释   、常见字符串拼接方法效率比较  、csdn上的解释"></a>序列化：就是层次遍历，然后用字符串记录节点的值，还有加入“null”的时机，只有当前节点所在深度小于树的深度时才需要加入“null”，还有一个<strong>非常重要的点：字符串拼接</strong>。就如serialize函数中 ans += (“,” + to_string(tmp-&gt;left-&gt;val)); 如果改为ans = ans + “,” + to_string(tmp-&gt;left-&gt;val);的话，无论是时间或空间消耗都会上升一个数量级。<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/xu-lie-hua-er-cha-shu-lcof/solution/zha-zha-fa-xian-de-wen-ti-xi-wang-geng-duo-ren-kan/">leetcode上别人的解释</a>   、<a target="_blank" rel="noopener" href="https://www.cnblogs.com/james6176/p/3222671.html">常见字符串拼接方法效率比较</a>  、<a target="_blank" rel="noopener" href="https://blog.csdn.net/xiaobaismiley/article/details/25962483?utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~all~baidu_landing_v2~default-1-25962483.nonecase&amp;utm_term=c++%20%E5%8A%A0%E5%8F%B7%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%BC%E6%8E%A5">csdn上的解释</a></h2></li>
+<li><h2 id="反序列化：同样是层次遍历，根据字符串来建树，难点就是对substr取子串和stoi（字符串转整数）的运用，序列化则是对to-string的运用。"><a href="#反序列化：同样是层次遍历，根据字符串来建树，难点就是对substr取子串和stoi（字符串转整数）的运用，序列化则是对to-string的运用。" class="headerlink" title="反序列化：同样是层次遍历，根据字符串来建树，难点就是对substr取子串和stoi（字符串转整数）的运用，序列化则是对to_string的运用。"></a>反序列化：同样是层次遍历，根据字符串来建树，难点就是对substr取子串和stoi（字符串转整数）的运用，序列化则是对to_string的运用。</h2></li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Codec</span> </span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> getDepth(TreeNode *root) &#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">NULL</span>)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> max(getDepth(root-&gt;left), getDepth(root-&gt;right)) + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// Encodes a tree to a single string.</span></span><br><span class="line">    <span class="keyword">string</span> serialize(TreeNode* root) &#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">NULL</span>)<span class="keyword">return</span> <span class="string">&quot;[]&quot;</span>;</span><br><span class="line">        <span class="keyword">int</span> level = getDepth(root);</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">        queue&lt;TreeNode*&gt; q;</span><br><span class="line">        q.push(root);</span><br><span class="line">        <span class="keyword">string</span> ans = <span class="string">&quot;[&quot;</span> + to_string(root-&gt;val);</span><br><span class="line">        <span class="keyword">while</span>(!q.<span class="keyword">empty</span>())&#123;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">int</span> len = q.size();</span><br><span class="line">            <span class="keyword">while</span>(len--)&#123;</span><br><span class="line">                TreeNode *tmp = q.front(); q.pop();</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(tmp-&gt;left != <span class="literal">NULL</span>)&#123;</span><br><span class="line">                    ans += (<span class="string">&quot;,&quot;</span> + to_string(tmp-&gt;left-&gt;val));</span><br><span class="line">                    q.push(tmp-&gt;left);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">if</span>(i != level)ans += <span class="string">&quot;,null&quot;</span>;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(tmp-&gt;right != <span class="literal">NULL</span>)&#123;</span><br><span class="line">                    ans += (<span class="string">&quot;,&quot;</span> + to_string(tmp-&gt;right-&gt;val));</span><br><span class="line">                    q.push(tmp-&gt;right);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">if</span>(i != level)ans += <span class="string">&quot;,null&quot;</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            ++i;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ans += <span class="string">&quot;]&quot;</span>;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Decodes your encoded data to tree.</span></span><br><span class="line">    TreeNode* deserialize(<span class="keyword">string</span> data) &#123;</span><br><span class="line">        <span class="keyword">if</span>(data.size() == <span class="number">2</span>)<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//找到根节点的值</span></span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">1</span>,j = <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">while</span>(<span class="string">&#x27;0&#x27;</span> &lt;= data[j] &amp;&amp; data[j] &lt;= <span class="string">&#x27;9&#x27;</span>)++j;</span><br><span class="line">        <span class="keyword">int</span> rootValue = stoi(data.substr(i, j - i));</span><br><span class="line">        TreeNode *root = <span class="keyword">new</span> TreeNode(rootValue);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//bfs建树</span></span><br><span class="line">        queue&lt;TreeNode*&gt; q;</span><br><span class="line">        q.push(root);</span><br><span class="line">        <span class="keyword">while</span>(data[j] != <span class="string">&#x27;]&#x27;</span>)&#123;</span><br><span class="line">            TreeNode *tmp = q.front(); q.pop();</span><br><span class="line"></span><br><span class="line">            i = j + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(data[i] == <span class="string">&#x27;n&#x27;</span>)&#123;</span><br><span class="line">                j += <span class="number">5</span>;</span><br><span class="line">            &#125; </span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                j = i + <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">while</span>(<span class="string">&#x27;0&#x27;</span> &lt;= data[j] &amp;&amp; data[j] &lt;= <span class="string">&#x27;9&#x27;</span>)++j; </span><br><span class="line">                <span class="keyword">int</span> val =  stoi(data.substr(i, j - i));</span><br><span class="line">                TreeNode *node = <span class="keyword">new</span> TreeNode(val);</span><br><span class="line">                tmp-&gt;left = node;</span><br><span class="line">                q.push(node);</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            i = j + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(data[i] == <span class="string">&#x27;n&#x27;</span>)&#123;</span><br><span class="line">                j += <span class="number">5</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                j = i + <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">while</span>(<span class="string">&#x27;0&#x27;</span> &lt;= data[j] &amp;&amp; data[j] &lt;= <span class="string">&#x27;9&#x27;</span>)++j;</span><br><span class="line">                <span class="keyword">int</span> val =  stoi(data.substr(i, j - i));</span><br><span class="line">                TreeNode *node = <span class="keyword">new</span> TreeNode(val);</span><br><span class="line">                tmp-&gt;right = node;</span><br><span class="line">                q.push(node);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Your Codec object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment">// Codec codec;</span></span><br><span class="line"><span class="comment">// codec.deserialize(codec.serialize(root));</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/28/jzof-36/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JDW">
+      <meta itemprop="description" content="记录进阶之路">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jdw - blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/28/jzof-36/" class="post-title-link" itemprop="url">jzof_36</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-28 23:24:17 / 修改时间：23:25:26" itemprop="dateCreated datePublished" datetime="2020-09-28T23:24:17+08:00">2020-09-28</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="剑指-Offer-36-二叉搜索树与双向链表"><a href="#剑指-Offer-36-二叉搜索树与双向链表" class="headerlink" title="剑指 Offer 36. 二叉搜索树与双向链表"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/er-cha-sou-suo-shu-yu-shuang-xiang-lian-biao-lcof/">剑指 Offer 36. 二叉搜索树与双向链表</a></h1><h2 id="题解"><a href="#题解" class="headerlink" title="题解:"></a>题解:</h2><blockquote>
+<p>因为题目中链表的节点值的顺序是从小到大的，符合BST的中序遍历序列，所以我们采用中序遍历来将树来变成一个双向链表。下面是用栈来模拟中序遍历，然后逐个节点连接起来。</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">Node* <span class="title">treeToDoublyList</span><span class="params">(Node* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">NULL</span>)<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">        Node *head, *cur, *tmp, *prev;</span><br><span class="line">        head = cur  = prev = <span class="literal">NULL</span>;</span><br><span class="line">        tmp = root;</span><br><span class="line">        <span class="comment">//中序遍历</span></span><br><span class="line">        <span class="built_in">stack</span>&lt;Node*&gt; s;</span><br><span class="line">        <span class="keyword">do</span>&#123;</span><br><span class="line">            <span class="keyword">while</span>(tmp != <span class="literal">NULL</span>)&#123;</span><br><span class="line">                s.push(tmp);</span><br><span class="line">                tmp = tmp-&gt;left;</span><br><span class="line">            &#125;</span><br><span class="line">            tmp = s.top(); s.pop();</span><br><span class="line">            <span class="keyword">if</span>(head == <span class="literal">NULL</span>)head = tmp;</span><br><span class="line">            prev = cur;</span><br><span class="line">            cur = tmp;</span><br><span class="line">            <span class="comment">//以下两步就是连接cur和pre节点</span></span><br><span class="line">            cur-&gt;left = prev;</span><br><span class="line">            <span class="keyword">if</span>(prev != <span class="literal">NULL</span>)prev-&gt;right = cur;</span><br><span class="line">            </span><br><span class="line">            tmp = tmp-&gt;right;</span><br><span class="line">        &#125;<span class="keyword">while</span>(!s.empty() || tmp);</span><br><span class="line">        <span class="comment">//将头尾节点连接起来</span></span><br><span class="line">        head-&gt;left = cur;</span><br><span class="line">        cur-&gt;right = head;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="递归版的中序遍历，只需要几个全局变量来记录头尾节点以及前一个节点就可以了。"><a href="#递归版的中序遍历，只需要几个全局变量来记录头尾节点以及前一个节点就可以了。" class="headerlink" title="递归版的中序遍历，只需要几个全局变量来记录头尾节点以及前一个节点就可以了。"></a>递归版的中序遍历，只需要几个全局变量来记录头尾节点以及前一个节点就可以了。</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    Node *head, *prev, *tail;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">inorder</span><span class="params">(Node *root)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">NULL</span>)<span class="keyword">return</span> ;</span><br><span class="line">        </span><br><span class="line">        inorder(root-&gt;left);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//连接root和prev两个节点</span></span><br><span class="line">        root-&gt;left = prev;</span><br><span class="line">        <span class="keyword">if</span>(prev != <span class="literal">NULL</span>)prev-&gt;right = root;</span><br><span class="line">        <span class="keyword">else</span> head = root;<span class="comment">//记录头结点</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//连接完成后将prev指向当前节点</span></span><br><span class="line">        prev = root;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//记录尾节点</span></span><br><span class="line">        tail = root;</span><br><span class="line">   </span><br><span class="line">        inorder(root-&gt;right);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">Node* <span class="title">treeToDoublyList</span><span class="params">(Node* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">NULL</span>)<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">        head = tail = prev = <span class="literal">NULL</span>;</span><br><span class="line">        inorder(root);</span><br><span class="line">        <span class="comment">//连接头尾节点</span></span><br><span class="line">        head-&gt;left = tail;</span><br><span class="line">        tail-&gt;right = head;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/28/jzof-34/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JDW">
+      <meta itemprop="description" content="记录进阶之路">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jdw - blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/28/jzof-34/" class="post-title-link" itemprop="url">jzof_34</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-28 23:24:09 / 修改时间：23:25:14" itemprop="dateCreated datePublished" datetime="2020-09-28T23:24:09+08:00">2020-09-28</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="剑指-Offer-34-二叉树中和为某一值的路径"><a href="#剑指-Offer-34-二叉树中和为某一值的路径" class="headerlink" title="剑指 Offer 34. 二叉树中和为某一值的路径"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/er-cha-shu-zhong-he-wei-mou-yi-zhi-de-lu-jing-lcof/">剑指 Offer 34. 二叉树中和为某一值的路径</a></h1><h2 id="先序遍历和路径记录，路径记录用一个vector即可"><a href="#先序遍历和路径记录，路径记录用一个vector即可" class="headerlink" title="先序遍历和路径记录，路径记录用一个vector即可"></a>先序遍历和路径记录，路径记录用一个vector即可</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">//其实就是先序遍历</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(TreeNode *root, <span class="keyword">int</span> s, <span class="keyword">int</span> sum)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">NULL</span>)<span class="keyword">return</span> ;</span><br><span class="line">        path.push_back(root-&gt;val);</span><br><span class="line">        <span class="comment">//将当前节点的值加上</span></span><br><span class="line">        s += root-&gt;val;</span><br><span class="line">        <span class="comment">//如果当前路径和与目标值相等且当前节点为叶子节点</span></span><br><span class="line">        <span class="keyword">if</span>(s == sum &amp;&amp; root-&gt;left == <span class="literal">NULL</span> &amp;&amp; root-&gt;right == <span class="literal">NULL</span>)</span><br><span class="line">            ans.push_back(path);</span><br><span class="line">        dfs(root-&gt;left, s, sum);</span><br><span class="line">        dfs(root-&gt;right, s, sum);</span><br><span class="line">        path.pop_back();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; <span class="title">pathSum</span><span class="params">(TreeNode* root, <span class="keyword">int</span> sum)</span> </span>&#123;</span><br><span class="line">        dfs(root, <span class="number">0</span>, sum);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; ans;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; path;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/28/jzof-33/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JDW">
+      <meta itemprop="description" content="记录进阶之路">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jdw - blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/28/jzof-33/" class="post-title-link" itemprop="url">jzof_33</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-28 23:24:04 / 修改时间：23:25:02" itemprop="dateCreated datePublished" datetime="2020-09-28T23:24:04+08:00">2020-09-28</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="剑指-Offer-33-二叉搜索树的后序遍历序列"><a href="#剑指-Offer-33-二叉搜索树的后序遍历序列" class="headerlink" title="剑指 Offer 33. 二叉搜索树的后序遍历序列"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/er-cha-sou-suo-shu-de-hou-xu-bian-li-xu-lie-lcof/">剑指 Offer 33. 二叉搜索树的后序遍历序列</a></h1><h2 id="观察BST后序遍历的特性，最后一个为根节点，比根节点小的节点都是属于左子树，比根节点大的节点都是属于右子树。违背上面规则的话就不是BST。"><a href="#观察BST后序遍历的特性，最后一个为根节点，比根节点小的节点都是属于左子树，比根节点大的节点都是属于右子树。违背上面规则的话就不是BST。" class="headerlink" title="观察BST后序遍历的特性，最后一个为根节点，比根节点小的节点都是属于左子树，比根节点大的节点都是属于右子树。违背上面规则的话就不是BST。"></a>观察BST后序遍历的特性，最后一个为根节点，比根节点小的节点都是属于左子树，比根节点大的节点都是属于右子树。违背上面规则的话就不是BST。</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">helper</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;postorder, <span class="keyword">int</span> start, <span class="keyword">int</span> <span class="built_in">end</span>)</span></span>&#123;</span><br><span class="line">        <span class="comment">//如果当前区间没有元素或只有一个元素返回true</span></span><br><span class="line">        <span class="keyword">if</span>(start &gt;= <span class="built_in">end</span>)<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="comment">//当前区间最后一个元素为根节点的值</span></span><br><span class="line">        <span class="keyword">int</span> rootValue = postorder[<span class="built_in">end</span>];</span><br><span class="line">        <span class="comment">//比根节点小的都是左子树的节点</span></span><br><span class="line">        <span class="keyword">int</span> i = start;</span><br><span class="line">        <span class="keyword">while</span>(i &lt; <span class="built_in">end</span> &amp;&amp; postorder[i] &lt;= rootValue)</span><br><span class="line">            ++i;</span><br><span class="line">        <span class="comment">//除了左子树外剩下的应该都是右子树的节点，应该都比根节点大</span></span><br><span class="line">        <span class="keyword">int</span> j = i;</span><br><span class="line">        <span class="keyword">while</span>(j &lt; <span class="built_in">end</span>)</span><br><span class="line">            <span class="keyword">if</span>(postorder[j++] &lt; rootValue)</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="comment">//如果上面没有出错，接下来递归调用</span></span><br><span class="line">        <span class="keyword">return</span> helper(postorder, start, i - <span class="number">1</span>) &amp;&amp; helper(postorder, i, <span class="built_in">end</span> - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">verifyPostorder</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; postorder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> helper(postorder, <span class="number">0</span>, postorder.<span class="built_in">size</span>() - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -504,319 +816,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/28/jzof-27/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JDW">
-      <meta itemprop="description" content="记录进阶之路">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jdw - blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/28/jzof-27/" class="post-title-link" itemprop="url">jzof_27</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-09-28 23:20:01 / 修改时间：23:21:39" itemprop="dateCreated datePublished" datetime="2020-09-28T23:20:01+08:00">2020-09-28</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="剑指-Offer-27-二叉树的镜像"><a href="#剑指-Offer-27-二叉树的镜像" class="headerlink" title="剑指 Offer 27. 二叉树的镜像"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/er-cha-shu-de-jing-xiang-lcof/">剑指 Offer 27. 二叉树的镜像</a></h1><p>所谓镜像就是将每个节点的左右子树调换。直接上代码。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">mirrorTree</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">NULL</span>)<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">        TreeNode *t = root-&gt;left;</span><br><span class="line">        root-&gt;left = mirrorTree(root-&gt;right);</span><br><span class="line">        root-&gt;right = mirrorTree(t);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/28/jzof-26/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JDW">
-      <meta itemprop="description" content="记录进阶之路">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jdw - blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/28/jzof-26/" class="post-title-link" itemprop="url">jzof_26</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-09-28 23:19:57 / 修改时间：23:21:25" itemprop="dateCreated datePublished" datetime="2020-09-28T23:19:57+08:00">2020-09-28</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="剑指-Offer-26-树的子结构"><a href="#剑指-Offer-26-树的子结构" class="headerlink" title="剑指 Offer 26. 树的子结构"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/shu-de-zi-jie-gou-lcof/">剑指 Offer 26. 树的子结构</a></h1><h2 id="思路1："><a href="#思路1：" class="headerlink" title="思路1："></a>思路1：</h2><p>先用bfs在A树中找到与B树根节点值相同的节点，找到，就用判断两个点是否有相同子结构。</p>
-<p>判断规则：</p>
-<ol>
-<li>如果B为空，返回true</li>
-<li>如果A为空或者A和B节点不同，返回false；</li>
-<li>不满足1、2点，则返回对左右子树的递归判断。</li>
-</ol>
-<h2 id="思路2："><a href="#思路2：" class="headerlink" title="思路2："></a>思路2：</h2><p>与思路1类似，只是不是通过bfs来准确找到某个点，而是全部点都试一试，1、判读以A为根节点的树与b树是否满足条件；2、判断以A的左孩子为根节点的树与b树是否满足条件；3、判断以A的右孩子为根节点的树与b树是否满足条件。以上三个节点满足其中之一即可。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isSameTree</span><span class="params">(TreeNode *p,TreeNode *B)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!B)<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">if</span>(p==<span class="literal">NULL</span>||B-&gt;val!=p-&gt;val)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">return</span> isSameTree(p-&gt;left,B-&gt;left) &amp;&amp; isSameTree(p-&gt;right,B-&gt;right);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isSubStructure</span><span class="params">(TreeNode* A, TreeNode* B)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (A&amp;&amp;B) &amp;&amp; (isSameTree(A,B) || isSubStructure(A-&gt;left,B) || isSubStructure(A-&gt;right,B));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/28/jzof-25/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JDW">
-      <meta itemprop="description" content="记录进阶之路">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jdw - blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/28/jzof-25/" class="post-title-link" itemprop="url">jzof_25</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-09-28 23:19:53 / 修改时间：23:21:13" itemprop="dateCreated datePublished" datetime="2020-09-28T23:19:53+08:00">2020-09-28</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="剑指-Offer-25-合并两个排序的链表"><a href="#剑指-Offer-25-合并两个排序的链表" class="headerlink" title="剑指 Offer 25. 合并两个排序的链表"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/he-bing-liang-ge-pai-xu-de-lian-biao-lcof/">剑指 Offer 25. 合并两个排序的链表</a></h1><h2 id="简单的归并排序"><a href="#简单的归并排序" class="headerlink" title="简单的归并排序"></a>简单的归并排序</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">mergeTwoLists</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        ListNode *head=<span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        ListNode *rear=head;</span><br><span class="line">        <span class="keyword">while</span>(l1&amp;&amp;l2)&#123;</span><br><span class="line">            <span class="keyword">if</span>(l1-&gt;val&gt;l2-&gt;val)&#123;</span><br><span class="line">                rear-&gt;next=l2;</span><br><span class="line">                rear=l2;</span><br><span class="line">                l2=l2-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                rear-&gt;next=l1;</span><br><span class="line">                rear=l1;</span><br><span class="line">                l1=l1-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        rear-&gt;next = l1 == <span class="literal">NULL</span> ? l2 : l1;</span><br><span class="line">        <span class="keyword">return</span> head-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/28/jzof-24/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JDW">
-      <meta itemprop="description" content="记录进阶之路">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jdw - blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/28/jzof-24/" class="post-title-link" itemprop="url">jzof_24</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-09-28 23:19:49 / 修改时间：23:20:58" itemprop="dateCreated datePublished" datetime="2020-09-28T23:19:49+08:00">2020-09-28</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="剑指-Offer-24-反转链表"><a href="#剑指-Offer-24-反转链表" class="headerlink" title="剑指 Offer 24. 反转链表"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/fan-zhuan-lian-biao-lcof/">剑指 Offer 24. 反转链表</a></h1><h2 id="递归："><a href="#递归：" class="headerlink" title="递归："></a>递归：</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">reverseList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(head == <span class="literal">NULL</span> || head-&gt;next == <span class="literal">NULL</span>)<span class="keyword">return</span> head;</span><br><span class="line">        ListNode *tail = reverseList(head-&gt;next);<span class="comment">//先找到最后一个节点</span></span><br><span class="line">        head-&gt;next-&gt;next = head;<span class="comment">//将当前节点的下一个节点的next指向当前节点</span></span><br><span class="line">        head-&gt;next = <span class="literal">NULL</span>;<span class="comment">//将当前节点的next断掉，否则会出现环</span></span><br><span class="line">        <span class="keyword">return</span> tail;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="迭代："><a href="#迭代：" class="headerlink" title="迭代："></a>迭代：</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">reverseList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        ListNode* cur = <span class="literal">NULL</span>, *pre = head;<span class="comment">//pre指向的cur节点在新链表顺序中的前一个节点</span></span><br><span class="line">        <span class="keyword">while</span> (pre != <span class="literal">NULL</span>) &#123;</span><br><span class="line">            ListNode* t = pre-&gt;next;</span><br><span class="line">            pre-&gt;next = cur;</span><br><span class="line">            cur = pre;</span><br><span class="line">            pre = t;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cur;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/28/jzof-23/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JDW">
-      <meta itemprop="description" content="记录进阶之路">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jdw - blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/28/jzof-23/" class="post-title-link" itemprop="url">jzof_23</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-09-28 23:19:45 / 修改时间：23:20:48" itemprop="dateCreated datePublished" datetime="2020-09-28T23:19:45+08:00">2020-09-28</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="23、链表中环的入口节点"><a href="#23、链表中环的入口节点" class="headerlink" title="23、链表中环的入口节点"></a>23、链表中环的入口节点</h1><h1 id="142-环形链表-II"><a href="#142-环形链表-II" class="headerlink" title="142. 环形链表 II"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/linked-list-cycle-ii/">142. 环形链表 II</a></h1><h2 id="双指针（快慢指针-）：先用快慢指针来检查链表中是否有环，如果有再寻找环的入口。"><a href="#双指针（快慢指针-）：先用快慢指针来检查链表中是否有环，如果有再寻找环的入口。" class="headerlink" title="双指针（快慢指针 ）：先用快慢指针来检查链表中是否有环，如果有再寻找环的入口。"></a>双指针（快慢指针 ）：先用快慢指针来检查链表中是否有环，如果有再寻找环的入口。</h2><ol>
-<li>检查是否有环：快慢指针，慢指针每次走一步，快指针每次走两步，如果两个指针相遇，则链表中有环；如果快指针走到为空指针，则链表无环。</li>
-<li>若第一步检查出有环，则将慢指针重新指向链表头，然后快慢指针以同样的速度（每次走一步）来走，直到两个指针相遇，此时相遇初就是链表环的入口节点。</li>
-</ol>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode *<span class="title">detectCycle</span><span class="params">(ListNode *head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(head == <span class="literal">NULL</span>)<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">        ListNode *fast = head, *slow = head;</span><br><span class="line">        <span class="keyword">while</span>(fast-&gt;next != <span class="literal">NULL</span> &amp;&amp; fast-&gt;next-&gt;next != <span class="literal">NULL</span>)&#123;</span><br><span class="line">            fast = fast-&gt;next-&gt;next;</span><br><span class="line">            slow = slow-&gt;next;</span><br><span class="line">            <span class="keyword">if</span>(fast == slow)<span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(fast-&gt;next == <span class="literal">NULL</span> || fast-&gt;next-&gt;next == <span class="literal">NULL</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">        slow = head;</span><br><span class="line">        <span class="keyword">while</span>(slow != fast)&#123;</span><br><span class="line">            slow = slow-&gt;next;</span><br><span class="line">            fast = fast-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> slow;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="当然快慢指针除了上面这个解决方法，还有其他。如果我知道环中有n个节点，我们可以先让快指针走n步，然后慢指针指向链表头，然后以相同速度（每次走一步），直到两者相遇，则相遇处为环的入口节点。（当然应该还是第一种更快吧？！）"><a href="#当然快慢指针除了上面这个解决方法，还有其他。如果我知道环中有n个节点，我们可以先让快指针走n步，然后慢指针指向链表头，然后以相同速度（每次走一步），直到两者相遇，则相遇处为环的入口节点。（当然应该还是第一种更快吧？！）" class="headerlink" title="当然快慢指针除了上面这个解决方法，还有其他。如果我知道环中有n个节点，我们可以先让快指针走n步，然后慢指针指向链表头，然后以相同速度（每次走一步），直到两者相遇，则相遇处为环的入口节点。（当然应该还是第一种更快吧？！）"></a>当然快慢指针除了上面这个解决方法，还有其他。如果我知道环中有n个节点，我们可以先让快指针走n步，然后慢指针指向链表头，然后以相同速度（每次走一步），直到两者相遇，则相遇处为环的入口节点。（当然应该还是第一种更快吧？！）</h2><h2 id="证明："><a href="#证明：" class="headerlink" title="证明："></a>证明：</h2><blockquote>
-<p>已知环中节点有n个，设不在环中的节点有m个（m可以为任意值），所以链表一共有n+m个节点。所以从链表头走n+m-1步刚好走到链表的“尾部”；从链表头走n+m步刚好走到链表中环的入口节点。我们设第一个先走的指针为p1，第二个为p2。p1走了n步，p2开始指向链表头，此时p1和p2以每次走一步的速度前进，当走了m步后，p1和p2相遇，相遇处就是环入口节点。（因为p1走了n+m步，到了环入口节点；p2走了m步，同样走到环入口节点）</p>
-</blockquote>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode *<span class="title">detectCycle</span><span class="params">(ListNode *head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(head == <span class="literal">NULL</span>)<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">        ListNode *fast = head, *slow = head;</span><br><span class="line">        <span class="comment">//先检查链表中是否有环</span></span><br><span class="line">        <span class="keyword">while</span>(fast-&gt;next != <span class="literal">NULL</span> &amp;&amp; fast-&gt;next-&gt;next != <span class="literal">NULL</span>)&#123;</span><br><span class="line">            fast = fast-&gt;next-&gt;next;</span><br><span class="line">            slow = slow-&gt;next;</span><br><span class="line">            <span class="keyword">if</span>(fast == slow)<span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//没有环</span></span><br><span class="line">        <span class="keyword">if</span>(fast-&gt;next == <span class="literal">NULL</span> || fast-&gt;next-&gt;next == <span class="literal">NULL</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">        <span class="comment">//统计环中有多少个节点</span></span><br><span class="line">        ListNode *tmp = slow;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">do</span>&#123;</span><br><span class="line">            tmp = tmp-&gt;next;</span><br><span class="line">            ++n;</span><br><span class="line">        &#125;<span class="keyword">while</span>(tmp != slow);</span><br><span class="line">        <span class="comment">//快慢指针以相同速度移动直至相遇</span></span><br><span class="line">        fast = head;</span><br><span class="line">        <span class="keyword">while</span>(fast != slow)&#123;</span><br><span class="line">            slow = slow-&gt;next;</span><br><span class="line">            fast = fast-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> slow;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -886,12 +885,12 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-count">59</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
