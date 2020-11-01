@@ -127,7 +127,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">10</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">11</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -137,7 +137,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">60</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">61</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -190,6 +190,70 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/28/jzof-7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JDW">
+      <meta itemprop="description" content="记录进阶之路">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jdw - blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/28/jzof-7/" class="post-title-link" itemprop="url">jzof_7</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-28 22:06:35 / 修改时间：22:08:31" itemprop="dateCreated datePublished" datetime="2020-09-28T22:06:35+08:00">2020-09-28</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="剑指-Offer-07-重建二叉树"><a href="#剑指-Offer-07-重建二叉树" class="headerlink" title="剑指 Offer 07. 重建二叉树"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/zhong-jian-er-cha-shu-lcof/">剑指 Offer 07. 重建二叉树</a></h1><blockquote>
+<p>例：</p>
+<p>前序遍历 preorder = [3,9,20,15,7]<br>中序遍历 inorder = [9,3,15,20,7]</p>
+<p>观察前序遍历和中序遍历的序列关系，我们可知前序遍历序列的第一个元素是根，然后我们在中序遍历序列找到其位置，由中序遍历的特点可知，其左边的元素为当前节点的左子树的中序遍历序列，右边的元素为当前节点右子树的中序遍历序列。这样可以得出左右子树的元素个数，就可以再将中序序列与前序序列一一对应，递归调用生成整棵树。</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">buildTree</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; preorder, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; inorder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len=preorder.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">if</span>(len==<span class="number">0</span>)<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">return</span> buildTree_1(preorder,<span class="number">0</span>,len<span class="number">-1</span>,inorder,<span class="number">0</span>,len<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">TreeNode* <span class="title">buildTree_1</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; preorder,<span class="keyword">int</span> ps,<span class="keyword">int</span> pe ,<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; inorder,<span class="keyword">int</span> is,<span class="keyword">int</span> ie)</span><span class="comment">//辅助函数（ps、pe指代前序序列范围，is、ie指代中序序列范围）</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        TreeNode *root=<span class="keyword">new</span> TreeNode(preorder[ps]);</span><br><span class="line">        <span class="keyword">int</span> i=is;</span><br><span class="line">        <span class="keyword">while</span>(inorder[i]!=preorder[ps])<span class="comment">//查找根节点在中序序列的位置</span></span><br><span class="line">            ++i；</span><br><span class="line">        <span class="comment">//计算左右子树元素个数</span></span><br><span class="line">        <span class="keyword">int</span> leftsize=i-is;</span><br><span class="line">        <span class="keyword">int</span> rightsize=ie-i;</span><br><span class="line">        <span class="comment">//递归生成左右子树</span></span><br><span class="line">        <span class="keyword">if</span>(leftsize!=<span class="number">0</span>)root-&gt;left=buildTree_1(preorder,ps+<span class="number">1</span>,ps+leftsize,inorder,is,is+leftsize<span class="number">-1</span>);</span><br><span class="line">        <span class="keyword">if</span>(rightsize!=<span class="number">0</span>)root-&gt;right=buildTree_1(preorder,ps+leftsize+<span class="number">1</span>,pe,inorder,is+leftsize+<span class="number">1</span>,ie);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -865,86 +929,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/23/double-pointer/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JDW">
-      <meta itemprop="description" content="记录进阶之路">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jdw - blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/23/double-pointer/" class="post-title-link" itemprop="url">leetcode刷题---双指针</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-07-23 11:16:14" itemprop="dateCreated datePublished" datetime="2020-07-23T11:16:14+08:00">2020-07-23</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-02 15:13:24" itemprop="dateModified" datetime="2020-09-02T15:13:24+08:00">2020-09-02</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="leetcod刷题—-双指针"><a href="#leetcod刷题—-双指针" class="headerlink" title="leetcod刷题—-双指针"></a>leetcod刷题—-双指针</h1><h3 id="算法思想："><a href="#算法思想：" class="headerlink" title="算法思想："></a>算法思想：</h3><blockquote>
-<p><code>双指针</code>有可能用于遍历数组（或者链表），通常有两种形式：</p>
-<ol>
-<li>两个指针指向同一个数组中不同的元素（两指针遍历方向可能相同也可能不同）</li>
-<li>两个指针指向不同的数组</li></ol></blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/07/23/double-pointer/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1010,14 +998,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">60</span>
+          <span class="site-state-item-count">61</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
